@@ -8,7 +8,7 @@ const Hero = () => {
   const [text, setText] = useState("");
 
   return (
-    <section className="min-h-[90vh] flex flex-col items-center justify-center">
+    <section className="min-h-[100vh] flex flex-col items-center justify-center">
       <p className="text-center text-[1rem]">Hi,I am</p>
       <p className="text-center text-[3rem] font-bold">Siddhesh Dabholkar</p>
       <p className="text-center text-[0.75rem] w-1/2">
@@ -28,7 +28,7 @@ const Hero = () => {
             onClick={() => {
               setText(m);
             }}
-            className="bg-zinc-800 cursor-pointer text-zinc-50 rounded-full text-[0.8rem] px-2 p-[0.15rem]"
+            className="bg-zinc-800 cursor-pointer text-zinc-50 rounded-full text-[0.75rem] px-2 py-1 m-0"
             key={i}
           >
             {m}
