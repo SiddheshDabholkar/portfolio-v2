@@ -2,10 +2,14 @@ import React from "react";
 import SectionName from "../SectionName";
 import { contactHeading, contactIntro, socials } from "@/constant/contact";
 import Link from "next/link";
+import { SectionIds } from "@/constant/common";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
+    <div
+      className="min-h-screen flex flex-col items-center justify-center"
+      id={SectionIds.CONTACT}
+    >
       <SectionName text={contactHeading} />
       {/* <h1 className="text-center text-2xl mb-2">{contactHeading}</h1> */}
 

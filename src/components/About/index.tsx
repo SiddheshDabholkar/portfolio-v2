@@ -6,11 +6,14 @@ import SectionHeader from "./SectionHeader";
 import EducationCard from "./EducationCard";
 import ExperienceCard from "./ExperienceCard";
 import SectionName from "../SectionName";
-import { fullName } from "@/constant/common";
+import { fullName, SectionIds } from "@/constant/common";
 
 const About = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full min-h-screen">
+    <div
+      id={SectionIds.ABOUT}
+      className="flex flex-col items-center justify-center w-full h-full min-h-screen"
+    >
       <SectionName text="About us" />
       <div className="flex flex-row justify-start w-full gap-3 items-center">
         <div className="h-[70px] w-[70px] rounded-full bg-red-200" />

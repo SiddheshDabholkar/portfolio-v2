@@ -1,25 +1,33 @@
+enum SectionIds {
+  CHAT = "home",
+  ABOUT = "about",
+  PROJECT = "projects",
+  CONTACT = "contact",
+}
+
 const navData = [
   {
-    id: 1,
+    id: SectionIds.CHAT,
     name: "Chat",
     href: "#home",
   },
   {
-    id: 2,
+    id: SectionIds.ABOUT,
     name: "About",
     href: "#about",
   },
   {
-    id: 3,
+    id: SectionIds.PROJECT,
     name: "Projects",
     href: "#projects",
   },
   {
-    id: 4,
+    id: SectionIds.CONTACT,
     name: "Contact",
     href: "#contact",
   },
 ];
+
 const firstName = "Siddhesh";
 const fullName = `${firstName} Dabholkar`;
 
@@ -105,4 +113,4 @@ const tech = [
   },
 ];
 
-export { navData, questions, fullName, aiChatBotInfo };
+export { navData, questions, fullName, aiChatBotInfo, SectionIds };

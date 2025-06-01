@@ -2,13 +2,21 @@
 import React, { useState } from "react";
 import CustomRichTextEditor from "../ChatInput";
 import Send from "../buttons/Send";
-import { aiChatBotInfo, fullName, questions } from "@/constant/common";
+import {
+  aiChatBotInfo,
+  fullName,
+  questions,
+  SectionIds,
+} from "@/constant/common";
 
 const Hero = () => {
   const [text, setText] = useState("");
 
   return (
-    <section className="min-h-[100vh] flex flex-col items-center justify-center">
+    <section
+      id={SectionIds.CHAT}
+      className="min-h-[100vh] flex flex-col items-center justify-center"
+    >
       <p className="text-center text-[1rem]">Hi,I am</p>
       <p className="text-center text-[3rem] font-bold">{fullName}</p>
       <p className="text-center text-[0.75rem] w-1/2">{aiChatBotInfo}</p>
