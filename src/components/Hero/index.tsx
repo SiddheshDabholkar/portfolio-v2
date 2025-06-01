@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import CustomRichTextEditor from "../ChatInput";
 import Send from "../buttons/Send";
-import { questions } from "@/constant/common";
+import { aiChatBotInfo, fullName, questions } from "@/constant/common";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -10,11 +10,8 @@ const Hero = () => {
   return (
     <section className="min-h-[100vh] flex flex-col items-center justify-center">
       <p className="text-center text-[1rem]">Hi,I am</p>
-      <p className="text-center text-[3rem] font-bold">Siddhesh Dabholkar</p>
-      <p className="text-center text-[0.75rem] w-1/2">
-        Hi! I'm Siddhesh's AI assistant. Ask about my skills, projects,
-        education, or scroll for details!
-      </p>
+      <p className="text-center text-[3rem] font-bold">{fullName}</p>
+      <p className="text-center text-[0.75rem] w-1/2">{aiChatBotInfo}</p>
 
       <div className="bg-zinc-800 rounded-2xl p-3 w-8/12 my-8">
         <CustomRichTextEditor value={text} setValue={setText} />

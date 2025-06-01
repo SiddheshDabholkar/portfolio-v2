@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Contact = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center">
+    <div className="min-h-screen flex flex-col items-center justify-center">
       <SectionName text={contactHeading} />
       {/* <h1 className="text-center text-2xl mb-2">{contactHeading}</h1> */}
 

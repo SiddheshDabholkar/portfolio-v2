@@ -2,8 +2,6 @@ import { educationType, languagesType } from "./types";
 
 const bio = `I'm Siddhesh, a full-stack developer specializing in React Native  and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit. I'm Siddhesh, a full-stack developer specializing in React Native and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit.`;
 
-const fullName = "Siddhesh Dabholkar";
-
 const languages: languagesType[] = [
   {
     id: 1,
@@ -74,4 +72,4 @@ const experiences = [
   },
 ];
 
-export { bio, fullName, languages, education, experiences };
+export { bio, languages, education, experiences };

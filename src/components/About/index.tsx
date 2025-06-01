@@ -1,17 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
-import {
-  bio,
-  education,
-  experiences,
-  fullName,
-  languages,
-} from "@/constant/about";
+import { bio, education, experiences, languages } from "@/constant/about";
 import React from "react";
 import LanguageCard from "./LanguageCard";
 import SectionHeader from "./SectionHeader";
 import EducationCard from "./EducationCard";
 import ExperienceCard from "./ExperienceCard";
 import SectionName from "../SectionName";
+import { fullName } from "@/constant/common";
 
 const About = () => {
   return (
