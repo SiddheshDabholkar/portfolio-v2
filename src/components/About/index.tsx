@@ -11,15 +11,17 @@ import LanguageCard from "./LanguageCard";
 import SectionHeader from "./SectionHeader";
 import EducationCard from "./EducationCard";
 import ExperienceCard from "./ExperienceCard";
+import SectionName from "../SectionName";
 
 const About = () => {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full">
+    <div className="flex flex-col items-center justify-center w-full h-full min-h-screen">
+      <SectionName text="About us" />
       <div className="flex flex-row justify-start w-full gap-3 items-center">
-        <div className="h-[100px] w-[100px] rounded-full bg-red-200" />
+        <div className="h-[70px] w-[70px] rounded-full bg-red-200" />
         <div>
-          <p className="my-2 text-[1.85rem] font-extrabold">{fullName}</p>
-          <p className="my-2 text-[0.85rem] ">10 may 2001</p>
+          <p className="text-[1.85rem] font-extrabold">{fullName}</p>
+          <p className=" text-[0.85rem] ">10 may 2001</p>
         </div>
       </div>
 

@@ -1,4 +1,5 @@
-import { education } from "@/constant/about";
+import { ProjectType } from "@/constant/project";
+
 type languagesType = {
   id: number;
   name: string;
@@ -23,4 +24,25 @@ type experiencesType = {
   location: string;
 };
 
-export type { languagesType, educationType, experiencesType };
+type projectsType = {
+  id: number;
+  title: string;
+  description: string;
+  images: string[];
+  githubUrl: string;
+  publicUrl: string;
+  type: ProjectType;
+};
+
+type SkillType = {
+  img: string;
+  name: string;
+};
+
+export type {
+  languagesType,
+  educationType,
+  experiencesType,
+  projectsType,
+  SkillType,
+};
