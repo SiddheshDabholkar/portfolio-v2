@@ -1,6 +1,7 @@
-import { educationType, languagesType } from "./types";
+import { fullName } from "./common";
+import { educationType, experiencesType, languagesType } from "./types";
 
-const bio = `I'm Siddhesh, a full-stack developer specializing in React Native  and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit. I'm Siddhesh, a full-stack developer specializing in React Native and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit.`;
+const bio = `I'm ${fullName}, a full-stack developer specializing in React Native  and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit.`;
 
 const languages: languagesType[] = [
   {
@@ -30,19 +31,29 @@ const education: educationType[] = [
     id: 1,
     title: "Harmal panchakroshi shikshan mandal",
     location: "Arambol, Goa, India",
+    degree: "SSC",
     startYear: 2006,
+    endYear: 2017,
+  },
+  {
+    id: 2,
+    title: "Harmal panchakroshi shikshan mandal",
+    location: "Arambol, Goa, India",
+    degree: "HSSC",
+    startYear: 2017,
     endYear: 2019,
   },
   {
     id: 2,
-    title: "Bachelor of Engineering in Information Technology",
+    title: "Goa College of Engineering",
     location: "Farmagudi, Goa, India",
+    degree: "Bachelor of Engineering in Information Technology",
     startYear: 2019,
     endYear: 2023,
   },
 ];
 
-const experiences = [
+const experiences: experiencesType[] = [
   {
     id: 1,
     name: "Kalpas Innovations Pvt. Ltd.",

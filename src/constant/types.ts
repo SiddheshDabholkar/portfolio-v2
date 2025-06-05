@@ -9,6 +9,7 @@ type languagesType = {
 type educationType = {
   id: number;
   title: string;
+  degree: string;
   location: string;
   startYear: number;
   endYear: number;
