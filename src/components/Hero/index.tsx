@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState } from "react";
-import CustomRichTextEditor from "../ChatInput";
-import Send from "../buttons/Send";
 import {
   aiChatBotInfo,
   fullName,
   questions,
   SectionIds,
 } from "@/constant/common";
+import ChatSection from "./ChatSection";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -21,12 +20,8 @@ const Hero = () => {
       <p className="text-center text-[3rem] font-bold">{fullName}</p>
       <p className="text-center text-[0.75rem] w-1/2">{aiChatBotInfo}</p>
 
-      <div className="bg-zinc-800 rounded-2xl p-3 w-8/12 my-8">
-        <CustomRichTextEditor value={text} setValue={setText} />
-        <div className="flex flex-row items-center justify-end">
-          <Send />
-        </div>
-      </div>
+      <ChatSection text={text} setText={setText} />
+
       <div className="flex flex-row items-center justify-center flex-wrap gap-3">
         {questions.map((m, i) => (
           <span

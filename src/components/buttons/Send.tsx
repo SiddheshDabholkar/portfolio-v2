@@ -1,8 +1,13 @@
 import React from "react";
 
-const Send = () => {
+type SendProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+const Send: React.FC<SendProps> = (props) => {
   return (
-    <button className="h-[40px] w-[40px] rounded-full bg-zinc-950 flex flex-row items-center justify-center cursor-pointer">
+    <button
+      {...props}
+      className="h-[40px] w-[40px] rounded-full bg-zinc-950 flex flex-row items-center justify-center cursor-pointer"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
