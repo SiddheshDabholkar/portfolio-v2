@@ -3,6 +3,8 @@ import Message from "@/components/ChatDetails/Message";
 import ChatInput from "@/components/Hero/ChatSection";
 import Navbar from "@/components/Layout/Navbar";
 import RootLayout from "@/components/Layout/RootLayout";
+import axiosInstance from "@/utils/axios";
+import axios from "axios";
 import React, { useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
@@ -105,6 +107,16 @@ const dummyMessages = [
 const ChatDetails = () => {
   const [question, setQuestion] = useState("");
 
+  const handleMessage = async () => {
+    try {
+      const { data } = await axiosInstance.post("", {
+        question,
+      });
+    } catch (error) {
+      console.error("Something went wrong in handleMessage due to", error);
+    }
+  };
+
   return (
     <RootLayout>
       <div className="w-full h-[97vh] flex flex-col items-center justify-between">
@@ -119,7 +131,7 @@ const ChatDetails = () => {
             className="w-full md:w-8/12"
             text={question}
             setText={setQuestion}
-            onClickSend={() => {}}
+            onClickSend={handleMessage}
           />
           <div className="flex flex-row justify-center items-center gap-1 mt-2">
             <MdInfoOutline className="text-[0.75rem]" />
