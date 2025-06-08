@@ -45,7 +45,7 @@ const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
     if (isBot) {
       return "w-full bg-zinc-950";
     }
-    return "w-10/12  md:w-6/12 bg-zinc-900";
+    return "max-w-10/12  md:max-w-6/12 bg-zinc-900";
   }, [isBot]);
 
   return (
@@ -58,9 +58,8 @@ const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
         {isBot ? (
           <Markdown>{message}</Markdown>
         ) : (
-          <p className="text-[0.8rem] mb-2">{message}</p>
+          <p className="text-[0.8rem]">{message}</p>
         )}
-        {!isBot && <p className="text-[0.5rem]">{new Date().toDateString()}</p>}
       </div>
     </div>
   );

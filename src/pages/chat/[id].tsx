@@ -49,6 +49,7 @@ const ChatDetails = () => {
         }
       );
       if (data?.data && !data?.isError) {
+        setQuestion("");
         setMessages((prev) =>
           prev.map((m, i) => {
             if (i === prev.length - 1) {
@@ -79,7 +80,7 @@ const ChatDetails = () => {
     <RootLayout>
       <div className="w-full h-[97vh] flex flex-col items-center justify-between">
         <Navbar />
-        <div className="overflow-y-scroll flex flex-col h-full justify-end w-full p-2 scrollbar-hide my-2 md:w-8/12">
+        <div className="flex flex-col overflow-y-scroll h-full w-full justify-end p-2 scrollbar-hide my-2 md:w-8/12">
           {messages.map((m) => (
             <>
               <Message isBot={false} message={m.question} />
@@ -115,7 +116,7 @@ const ChatDetails = () => {
           />
           <div className="flex flex-row justify-center items-center gap-1 mt-2">
             <MdInfoOutline className="text-[0.75rem]" />
-            <p className="text-[0.55rem] text-zinc-400 mt-1">
+            <p className="text-[0.65rem] text-zinc-400 mt-1">
               chatbot can make mistake,proceed with caution
             </p>
           </div>
