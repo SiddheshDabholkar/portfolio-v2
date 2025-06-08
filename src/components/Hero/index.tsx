@@ -42,6 +42,7 @@ const Hero = () => {
         text={question}
         setText={setQuestion}
         onClickSend={handleChat}
+        disabled={false}
       />
       <div className="flex flex-row items-center justify-center flex-wrap gap-3">
         {questions.map((m, i) => (

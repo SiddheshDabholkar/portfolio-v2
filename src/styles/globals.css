@@ -57,3 +57,27 @@ html {
   display: none;
   /* Chrome, Safari, and Opera */
 }
+
+&[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.markdown-control {
+  font-size: 0.8rem;
+
+  p {
+    margin-bottom: 1.25rem;
+  }
+
+  ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+  }
+
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+}

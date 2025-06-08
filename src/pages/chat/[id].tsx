@@ -4,115 +4,62 @@ import ChatInput from "@/components/Hero/ChatSection";
 import Navbar from "@/components/Layout/Navbar";
 import RootLayout from "@/components/Layout/RootLayout";
 import axiosInstance from "@/utils/axios";
-import axios from "axios";
+import { useParams } from "next/navigation";
 import React, { useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
-const dummyMessages = [
-  {
-    id: 1,
-    isUser: true,
-    message: "Who the hell are you?",
-  },
-  {
-    id: 2,
-    isUser: false,
-    message: "I am Siddhesh Dabholkar's assistant. I'm here to help you.",
-  },
-  {
-    id: 3,
-    isUser: true,
-    message: "What can you do?",
-  },
-  {
-    id: 4,
-    isUser: false,
-    message:
-      "I can answer questions, help with coding, and assist with anything Siddhesh needs.",
-  },
-  {
-    id: 5,
-    isUser: true,
-    message: "Can you book a meeting for tomorrow?",
-  },
-  {
-    id: 6,
-    isUser: false,
-    message: "Sure. What time should I schedule it for?",
-  },
-  {
-    id: 7,
-    isUser: true,
-    message: "Let's do 11 AM.",
-  },
-  {
-    id: 8,
-    isUser: false,
-    message: "Got it. Meeting scheduled for 11 AM tomorrow.",
-  },
-  {
-    id: 4,
-    isUser: false,
-    message:
-      "I can answer questions, help with coding, and assist with anything Siddhesh needs.",
-  },
-  {
-    id: 5,
-    isUser: true,
-    message: "Can you book a meeting for tomorrow?",
-  },
-  {
-    id: 6,
-    isUser: false,
-    message: "Sure. What time should I schedule it for?",
-  },
-  {
-    id: 7,
-    isUser: true,
-    message: "Let's do 11 AM.",
-  },
-  {
-    id: 8,
-    isUser: false,
-    message: "Got it. Meeting scheduled for 11 AM tomorrow.",
-  },
-  {
-    id: 4,
-    isUser: false,
-    message:
-      "I can answer questions, help with coding, and assist with anything Siddhesh needs.",
-  },
-  {
-    id: 5,
-    isUser: true,
-    message: "Can you book a meeting for tomorrow?",
-  },
-  {
-    id: 6,
-    isUser: false,
-    message: "Sure. What time should I schedule it for?",
-  },
-  {
-    id: 7,
-    isUser: true,
-    message: "Let's do 11 AM.",
-  },
-  {
-    id: 8,
-    isUser: false,
-    message: "Got it. Meeting scheduled for 11 AM tomorrow.",
-  },
-];
+type SingleMessageType = {
+  id: string;
+  question: string;
+  answer: string;
+};
 
 const ChatDetails = () => {
+  const [isSending, setIsSending] = useState(false);
+  const [messages, setMessages] = useState<SingleMessageType[]>([]);
+  const params = useParams<{
+    id: string;
+  }>();
+  const id = params?.id;
+
   const [question, setQuestion] = useState("");
 
   const handleMessage = async () => {
     try {
-      const { data } = await axiosInstance.post("", {
-        question,
-      });
+      setIsSending(true);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: "",
+          question,
+          answer: "",
+        },
+      ]);
+      const { data } = await axiosInstance.post(
+        "create-message",
+        {
+          question,
+        },
+        {
+          headers: {
+            userid: id,
+          },
+        }
+      );
+      if (data?.data && !data?.isError) {
+        setMessages((prev) =>
+          prev.map((m, i) => {
+            if (i === prev.length - 1) {
+              return data?.data;
+            }
+            return m;
+          })
+        );
+      } else {
+      }
+      setIsSending(false);
     } catch (error) {
+      setIsSending(false);
       console.error("Something went wrong in handleMessage due to", error);
     }
   };
@@ -121,9 +68,30 @@ const ChatDetails = () => {
     <RootLayout>
       <div className="w-full h-[97vh] flex flex-col items-center justify-between">
         <Navbar />
-        <div className="overflow-y-scroll w-full p-2 scrollbar-hide my-2 md:w-8/12">
-          {dummyMessages.map((m) => (
-            <Message isBot={!m.isUser} message={m.message} />
+        <div className="overflow-y-scroll flex flex-col h-full justify-end w-full p-2 scrollbar-hide my-2 md:w-8/12">
+          {messages.map((m) => (
+            <>
+              <Message isBot={false} message={m.question} />
+              <Message
+                id={m.id}
+                isBot
+                message={m?.answer ?? ""}
+                onMessageUpdate={(mess) => {
+                  setMessages((prev) =>
+                    prev.map((m, i) => {
+                      if (i === prev.length - 1) {
+                        const sanitizedAnswer = m?.answer ?? "";
+                        return {
+                          ...m,
+                          answer: sanitizedAnswer + mess,
+                        };
+                      }
+                      return m;
+                    })
+                  );
+                }}
+              />
+            </>
           ))}
         </div>
         <footer className="w-full flex flex-col items-center">
@@ -132,6 +100,7 @@ const ChatDetails = () => {
             text={question}
             setText={setQuestion}
             onClickSend={handleMessage}
+            disabled={isSending}
           />
           <div className="flex flex-row justify-center items-center gap-1 mt-2">
             <MdInfoOutline className="text-[0.75rem]" />
