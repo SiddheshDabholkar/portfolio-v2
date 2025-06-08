@@ -6,7 +6,7 @@ import {
   questions,
   SectionIds,
 } from "@/constant/common";
-import ChatSection from "./ChatSection";
+import ChatInput from "./ChatSection";
 
 const Hero = () => {
   const [text, setText] = useState("");
@@ -19,9 +19,12 @@ const Hero = () => {
       <p className="text-center text-[1rem]">Hi,I am</p>
       <p className="text-center text-[3rem] font-bold">{fullName}</p>
       <p className="text-center text-[0.75rem] w-1/2">{aiChatBotInfo}</p>
-
-      <ChatSection text={text} setText={setText} />
-
+      <ChatInput
+        className="my-8"
+        text={text}
+        setText={setText}
+        onClickSend={() => {}}
+      />
       <div className="flex flex-row items-center justify-center flex-wrap gap-3">
         {questions.map((m, i) => (
           <span

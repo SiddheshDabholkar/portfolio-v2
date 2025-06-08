@@ -9,22 +9,22 @@ const navData = [
   {
     id: SectionIds.CHAT,
     name: "Chat",
-    href: "#home",
+    href: "/#home",
   },
   {
     id: SectionIds.ABOUT,
     name: "About",
-    href: "#about",
+    href: "/#about",
   },
   {
     id: SectionIds.PROJECT,
     name: "Projects",
-    href: "#projects",
+    href: "/#projects",
   },
   {
     id: SectionIds.CONTACT,
     name: "Contact",
-    href: "#contact",
+    href: "/#contact",
   },
 ];
 
@@ -41,6 +41,5 @@ const questions = [
   "which frontend framework/library you prefer?",
   "Which backend framework you prefer?",
 ];
-
 
 export { navData, questions, fullName, aiChatBotInfo, SectionIds };

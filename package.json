@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/genai": "^1.4.0",
     "@supabase/supabase-js": "^2.49.8",
     "@supercharge/request-ip": "^1.2.0",
     "@tiptap/react": "^2.12.0",

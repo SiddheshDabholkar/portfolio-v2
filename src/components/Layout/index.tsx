@@ -2,36 +2,20 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import { Geist, Geist_Mono } from "next/font/google";
+import RootLayout from "./RootLayout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-type RootLayoutProps = React.FC<{
+type LayoutProps = React.FC<{
   children: React.ReactNode;
 }>;
 
-const RootLayout: RootLayoutProps = ({ children }) => {
+const Layout: LayoutProps = ({ children }) => {
   return (
-    <div
-      className={`${geistSans.className} ${geistMono.className} bg-zinc-950 w-full h-full min-h-screen p-3 `}
-    >
-      <main className="container mx-auto">
-        <div className="max-w-7xl mx-auto relative flex flex-col items-center">
-          <Navbar />
-          <main className="h-full w-full">{children}</main>
-          <Footer />
-        </div>
-      </main>
-    </div>
+    <RootLayout>
+      <Navbar />
+      <main className="h-full w-full">{children}</main>
+      <Footer />
+    </RootLayout>
   );
 };
 
-export default RootLayout;
+export default Layout;

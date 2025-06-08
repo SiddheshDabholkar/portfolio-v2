@@ -1,30 +1,33 @@
-import React, { useState } from "react";
+import React from "react";
 import Send from "../buttons/Send";
 import CustomRichTextEditor from "../ChatInput";
 
-type ChatSectionProps = React.FC<{
-  text: string;
-  setText: React.Dispatch<React.SetStateAction<string>>;
-}>;
+type ChatInputProps = React.FC<
+  {
+    text: string;
+    onClickSend: () => void;
+    setText: React.Dispatch<React.SetStateAction<string>>;
+  } & React.HTMLAttributes<HTMLDivElement>
+>;
 
-const ChatSection: ChatSectionProps = ({ text, setText }) => {
-  const [messages, setMessages] = useState([]);
-
-  const handleSendMessage = () => {
-    try {
-    } catch (error) {
-      console.error("Something went wrong in handleSendMessage due to ", error);
-    }
-  };
-
+const ChatInput: ChatInputProps = ({
+  text,
+  setText,
+  className,
+  onClickSend,
+  ...props
+}) => {
   return (
     <>
-      <div className="bg-zinc-800 rounded-2xl p-3 w-8/12 my-8">
+      <div
+        {...props}
+        className={`bg-zinc-800 rounded-2xl p-3 w-8/12 ${className}`}
+      >
         <CustomRichTextEditor value={text} setValue={setText} />
         <div className="flex flex-row items-center justify-end">
           <Send
             onClick={() => {
-              handleSendMessage();
+              onClickSend();
             }}
           />
         </div>
@@ -33,4 +36,4 @@ const ChatSection: ChatSectionProps = ({ text, setText }) => {
   );
 };
 
-export default ChatSection;
+export default ChatInput;
