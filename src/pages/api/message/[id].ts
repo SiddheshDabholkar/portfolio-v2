@@ -4,9 +4,10 @@ import { sse } from "@/utils/sse";
 import { supabase } from "@/utils/supabase";
 import { GoogleGenAI } from "@google/genai";
 import type { NextApiRequest, NextApiResponse } from "next";
+import Groq from "groq-sdk";
+import { GROQ_API_KEY } from "@/constant/envs";
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const groq = new Groq({ apiKey: GROQ_API_KEY });
 
 export default async function handler(
   req: NextApiRequest,
@@ -43,27 +44,29 @@ export default async function handler(
       });
       return;
     }
-
-    const systemPrompt = {
-      role: "model",
-      content: systemPromtContent,
-    };
-
-    const chat = ai.chats.create({
-      model: "gemini-1.5-flash",
-      history: [systemPrompt],
-    });
-
     const { answer, question, userId } = messageDetail;
 
-    const result = await chat.sendMessageStream({
-      message: question,
+    const stream = await groq.chat.completions.create({
+      messages: [
+        {
+          role: "system",
+          content: systemPromtContent,
+        },
+        {
+          role: "user",
+          content: question,
+        },
+      ],
+      model: "llama3-8b-8192",
+      temperature: 0.7,
+      max_tokens: 1024,
+      stream: true,
     });
 
     const completeText = [];
 
-    for await (const chunk of result) {
-      const text = chunk.text;
+    for await (const chunk of stream) {
+      const text = chunk.choices[0]?.delta?.content || "";
       completeText.push(text);
       if (text) {
         sse({
