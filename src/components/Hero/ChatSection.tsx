@@ -26,13 +26,13 @@ const ChatInput: ChatInputProps = ({
         aria-disabled={disabled}
         className={`bg-zinc-800 rounded-2xl p-3 w-8/12 ${className}`}
       >
-        <CustomRichTextEditor value={text} setValue={setText} />
+        <CustomRichTextEditor
+          value={text}
+          setValue={setText}
+          handleClick={onClickSend}
+        />
         <div className="flex flex-row items-center justify-end">
-          <Send
-            onClick={() => {
-              onClickSend();
-            }}
-          />
+          <Send onClick={onClickSend} />
         </div>
       </div>
     </>

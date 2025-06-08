@@ -1,7 +1,7 @@
 import { RESPONSE_MESSAGES } from "@/constant/messages";
 import { FormatResponse } from "@/utils/response";
 import { sse } from "@/utils/sse";
-import { supabase } from "@/utils/supabase";
+import { handleCreateMessage, supabase } from "@/utils/supabase";
 import { GoogleGenAI } from "@google/genai";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -17,18 +17,12 @@ export default async function handler(
     return;
   }
   try {
-    const userid = req.headers.userid;
+    const userid = String(req.headers.userid);
     const { question } = req.body;
-    const { error, count, data, status, statusText } = await supabase
-      .from("message")
-      .insert([
-        {
-          question: question,
-          userId: userid,
-        },
-      ])
-      .select();
-    const messageDetail = data && Array.isArray(data) ? data[0] : null;
+    const messageDetail = await handleCreateMessage({
+      question,
+      userId: userid,
+    });
     if (messageDetail) {
       res.status(200).json(
         FormatResponse({

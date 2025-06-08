@@ -42,4 +42,15 @@ const questions = [
   "Which backend framework you prefer?",
 ];
 
-export { navData, questions, fullName, aiChatBotInfo, SectionIds };
+const LOCALSTORAGE_KEYS = {
+  QUESTION: "QUESTION",
+};
+
+export {
+  navData,
+  questions,
+  fullName,
+  aiChatBotInfo,
+  SectionIds,
+  LOCALSTORAGE_KEYS,
+};

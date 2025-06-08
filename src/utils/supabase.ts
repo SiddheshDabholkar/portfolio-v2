@@ -9,4 +9,25 @@ const supabase = createClient(
   NEXT_PUBLIC_SUPABASE_ANON_KEY
 );
 
-export { supabase };
+type handleCreateMessageProps = {
+  question: string;
+  userId: string;
+};
+const handleCreateMessage = async ({
+  question,
+  userId,
+}: handleCreateMessageProps) => {
+  const { data } = await supabase
+    .from("message")
+    .insert([
+      {
+        question,
+        userId,
+      },
+    ])
+    .select();
+  const messageDetail = data && Array.isArray(data) ? data[0] : null;
+  return messageDetail;
+};
+
+export { supabase, handleCreateMessage };

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import {
   aiChatBotInfo,
   fullName,
+  LOCALSTORAGE_KEYS,
   questions,
   SectionIds,
 } from "@/constant/common";
@@ -13,18 +14,31 @@ import { useRouter } from "next/router";
 const Hero = () => {
   const router = useRouter();
   const [question, setQuestion] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
 
   const handleChat = async () => {
+    if (!question) {
+      return;
+    }
     try {
+      setIsCreating(true);
       const { data } = await axiosInstance.post("create", {
         question,
       });
       console.log("handleMessageData", data);
       if (data.isError && !data.data) {
       } else {
-        router.push(`/chat/${data.data.id}`);
+        const userDetails = data.data.userDetails;
+        const messageDetails = data.data.message;
+        localStorage.setItem(
+          LOCALSTORAGE_KEYS.QUESTION,
+          JSON.stringify(messageDetails)
+        );
+        router.push(`/chat/${userDetails.id}`);
       }
+      setIsCreating(false);
     } catch (error) {
+      setIsCreating(false);
       console.error("Something went wrong in handleMessage due to", error);
     }
   };
@@ -42,7 +56,7 @@ const Hero = () => {
         text={question}
         setText={setQuestion}
         onClickSend={handleChat}
-        disabled={false}
+        disabled={isCreating}
       />
       <div className="flex flex-row items-center justify-center flex-wrap gap-3">
         {questions.map((m, i) => (

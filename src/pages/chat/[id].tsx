@@ -3,9 +3,11 @@ import Message from "@/components/ChatDetails/Message";
 import ChatInput from "@/components/Hero/ChatSection";
 import Navbar from "@/components/Layout/Navbar";
 import RootLayout from "@/components/Layout/RootLayout";
+import { LOCALSTORAGE_KEYS } from "@/constant/common";
 import axiosInstance from "@/utils/axios";
+import { getParsed } from "@/utils/common";
 import { useParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
 type SingleMessageType = {
@@ -63,6 +65,15 @@ const ChatDetails = () => {
       console.error("Something went wrong in handleMessage due to", error);
     }
   };
+
+  useEffect(() => {
+    const localMessage = localStorage.getItem(LOCALSTORAGE_KEYS.QUESTION);
+    const parsedLocalMessage = getParsed(localMessage);
+    if (parsedLocalMessage) {
+      setMessages([parsedLocalMessage]);
+      localStorage.removeItem(LOCALSTORAGE_KEYS.QUESTION);
+    }
+  }, []);
 
   return (
     <RootLayout>
