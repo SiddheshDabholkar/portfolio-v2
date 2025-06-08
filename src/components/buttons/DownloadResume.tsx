@@ -3,7 +3,7 @@ import React from "react";
 const DownloadResume = () => {
   return (
     <a target="_blank" href="resume.pdf">
-      <button className="flex cursor-pointer flex-row gap-2 items-center text-[0.75rem] bg-zinc-200 rounded-full py-2 px-4 text-zinc-900">
+      <button className="flex cursor-pointer flex-row gap-2 items-center text-[0.65rem] md:text-[0.75rem] bg-zinc-200 rounded-full py-2 px-4 text-zinc-900">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="14"

@@ -49,10 +49,14 @@ const Hero = () => {
       className="min-h-[100vh] flex flex-col items-center justify-center"
     >
       <p className="text-center text-[1rem]">Hi,I am</p>
-      <p className="text-center text-[3rem] font-bold">{fullName}</p>
-      <p className="text-center text-[0.75rem] w-1/2">{aiChatBotInfo}</p>
+      <p className="text-center text-[2rem] md:text-[3rem] font-bold">
+        {fullName}
+      </p>
+      <p className="text-center text-[0.75rem] w-full md:w-1/2">
+        {aiChatBotInfo}
+      </p>
       <ChatInput
-        className="my-8"
+        className="my-8 w-full md:w-8/12"
         text={question}
         setText={setQuestion}
         onClickSend={handleChat}
@@ -64,7 +68,7 @@ const Hero = () => {
             onClick={() => {
               setQuestion(m);
             }}
-            className="bg-zinc-800 cursor-pointer text-zinc-50 rounded-full text-[0.75rem] px-2 py-1 m-0"
+            className="bg-zinc-800 cursor-pointer text-zinc-50 rounded-full text-[0.6rem] md:text-[0.75rem] px-2 py-1 m-0"
             key={i}
           >
             {m}

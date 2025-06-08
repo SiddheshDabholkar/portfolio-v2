@@ -37,7 +37,7 @@ const About = () => {
       </div>
       <div className="mt-12 w-full">
         <SectionHeader text="Education" />
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row flex-wrap gap-3">
           {education.map((m) => (
             <EducationCard data={m} key={m.id} />
           ))}
@@ -45,7 +45,7 @@ const About = () => {
       </div>
       <div className="mt-12 w-full">
         <SectionHeader text="Experience" />
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row flex-wrap gap-3">
           {experiences.map((m) => (
             <ExperienceCard data={m} key={m.id} />
           ))}

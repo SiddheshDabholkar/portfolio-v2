@@ -9,9 +9,9 @@ type ProjectCardProps = React.FC<{
 }>;
 const ProjectCard: ProjectCardProps = ({ data }) => {
   return (
-    <div className="flex flex-row  border border-zinc-700 rounded-xl p-4">
-      <div className="w-4/12 h-[250px] overflow-hidden rounded-lg bg-gradient-to-r from-fuchsia-600 to-purple-600"></div>
-      <div className="w-8/12 h-full px-3 flex flex-col">
+    <div className="flex flex-col md:flex-row  border border-zinc-700 rounded-xl p-4">
+      <div className="w-full md:w-4/12 h-[250px] overflow-hidden rounded-lg bg-gradient-to-r from-fuchsia-600 to-purple-600"></div>
+      <div className="w-full md:w-8/12 h-full px-3 flex flex-col">
         <h1 className="text-2xl font-extrabold mb-2">{data.title}</h1>
         <p className="m-0 text-[0.8rem]">{data.description}</p>
         <div className="my-2 gap-2 flex items-center">

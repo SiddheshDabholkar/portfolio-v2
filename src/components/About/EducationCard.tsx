@@ -6,7 +6,7 @@ type EducationCardProps = React.FC<{
 }>;
 const EducationCard: EducationCardProps = ({ data }) => {
   return (
-    <div className="border border-zinc-700 w-max rounded-xl p-3">
+    <div className="border border-zinc-700  w-full md:w-max  rounded-xl p-3">
       <p className="text-[0.85rem] mb-2">{data.title}</p>
       <p className="text-[0.65rem] mb-1">{data.location}</p>
       <div className="text-[0.65rem]">

@@ -13,8 +13,10 @@ const Contact = () => {
       <SectionName text={contactHeading} />
       {/* <h1 className="text-center text-2xl mb-2">{contactHeading}</h1> */}
 
-      <p className="text-center w-3/4 text-[0.9rem]">{contactIntro}</p>
-      <div className="flex flex-row gap-3 mt-6 items-center justify-center">
+      <p className="text-center w-3/4 text-[0.7rem] md:text-[0.9rem]">
+        {contactIntro}
+      </p>
+      <div className="flex flex-row flex-wrap gap-3 mt-6 items-center justify-center">
         {socials.map((m) => {
           const Icon = m.icon;
           return (
