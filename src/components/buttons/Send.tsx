@@ -2,10 +2,12 @@ import React from "react";
 
 type SendProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Send: React.FC<SendProps> = (props) => {
+const Send: React.FC<SendProps> = ({ disabled, ...props }) => {
   return (
     <button
       {...props}
+      disabled={disabled}
+      aria-disabled={disabled}
       className="h-[40px] w-[40px] rounded-full bg-zinc-950 flex flex-row items-center justify-center cursor-pointer"
     >
       <svg

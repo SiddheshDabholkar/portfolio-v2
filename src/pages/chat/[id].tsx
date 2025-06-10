@@ -1,4 +1,5 @@
 import Header from "@/components/ChatDetails/Header";
+import LimitExceeded from "@/components/ChatDetails/LimitExceeded";
 import Message from "@/components/ChatDetails/Message";
 import ChatInput from "@/components/Hero/ChatSection";
 import Navbar from "@/components/Layout/Navbar";
@@ -25,6 +26,9 @@ const ChatDetails = () => {
   const id = params?.id;
 
   const [question, setQuestion] = useState("");
+  const [isLimitExceeded, setIsLimitExceeded] = useState(false);
+
+  console.log("isLimitExceeded", isLimitExceeded);
 
   const handleMessage = async () => {
     try {
@@ -74,6 +78,10 @@ const ChatDetails = () => {
       setMessages([parsedLocalMessage]);
       localStorage.removeItem(LOCALSTORAGE_KEYS.QUESTION);
     }
+    const limitExceededLocal = Boolean(
+      localStorage.getItem(LOCALSTORAGE_KEYS.LIMIT_EXCEEDED)
+    );
+    setIsLimitExceeded(limitExceededLocal);
   }, []);
 
   return (
@@ -87,7 +95,16 @@ const ChatDetails = () => {
               <Message
                 id={m.id}
                 isBot
+                userId={id}
                 message={m?.answer ?? ""}
+                onLimitExceed={() => {
+                  console.log("onLimitExceed called");
+                  localStorage.setItem(
+                    LOCALSTORAGE_KEYS.LIMIT_EXCEEDED,
+                    "true"
+                  );
+                  setIsLimitExceeded(true);
+                }}
                 onMessageUpdate={(mess) => {
                   setMessages((prev) =>
                     prev.map((m, i) => {
@@ -105,6 +122,7 @@ const ChatDetails = () => {
               />
             </>
           ))}
+          {isLimitExceeded && <LimitExceeded />}
         </div>
         <footer className="w-full flex flex-col items-center">
           <ChatInput
@@ -112,7 +130,7 @@ const ChatDetails = () => {
             text={question}
             setText={setQuestion}
             onClickSend={handleMessage}
-            disabled={isSending}
+            disabled={isSending || isLimitExceeded}
           />
           <div className="flex flex-row justify-center items-center gap-1 mt-2">
             <MdInfoOutline className="text-[0.75rem]" />

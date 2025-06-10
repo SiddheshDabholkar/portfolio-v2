@@ -7,9 +7,18 @@ type MessageProps = React.FC<{
   isBot: boolean;
   message: string;
   id?: string;
+  userId?: string;
   onMessageUpdate?: (message: string) => void;
+  onLimitExceed?: () => void;
 }>;
-const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
+const Message: MessageProps = ({
+  id,
+  isBot,
+  message,
+  onMessageUpdate,
+  userId,
+  onLimitExceed,
+}) => {
   const [localMessage, setLocalMessage] = useState(message ?? "");
 
   useEffect(() => {
@@ -17,9 +26,9 @@ const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
   }, [message]);
 
   useEffect(() => {
-    if (id && !localMessage) {
+    if (id && userId && !localMessage) {
       const eventSource = new EventSource(
-        `${NEXT_PUBLIC_API_URL}message/${id}`
+        `${NEXT_PUBLIC_API_URL}message/${userId}/${id}`
       );
       eventSource.onmessage = (e) => {
         const serverText = e.data;
@@ -30,6 +39,9 @@ const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
         } else {
           if (message === SSE.COMPLETED) {
             eventSource.close();
+          } else if (message === SSE.LIMIT_EXCEEDED) {
+            eventSource.close();
+            onLimitExceed && onLimitExceed();
           } else if (message === SSE.FAILED) {
             eventSource.close();
           } else {
@@ -37,9 +49,11 @@ const Message: MessageProps = ({ id, isBot, message, onMessageUpdate }) => {
           }
         }
       };
+      return () => {
+        eventSource.close();
+      };
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, localMessage]);
+  }, [id, localMessage, userId]);
 
   const cardClassName = useMemo(() => {
     if (isBot) {

@@ -5,12 +5,14 @@ import StarterKit from "@tiptap/starter-kit";
 type CustomRichTextEditorProps = React.FC<{
   handleClick?: () => void;
   value: string;
+  disabled: boolean;
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }>;
 const CustomRichTextEditor: CustomRichTextEditorProps = ({
   handleClick = () => {},
   value,
   setValue,
+  disabled = false,
 }) => {
   const editorRef = useRef(null);
 
@@ -19,6 +21,7 @@ const CustomRichTextEditor: CustomRichTextEditorProps = ({
   const editor = useEditor({
     extensions: [StarterKit],
     content: value,
+    editable: disabled,
     editorProps: {
       handleKeyDown(_, event) {
         if (event.key === "Enter") {

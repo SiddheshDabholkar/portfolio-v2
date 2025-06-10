@@ -30,9 +30,10 @@ const ChatInput: ChatInputProps = ({
           value={text}
           setValue={setText}
           handleClick={onClickSend}
+          disabled={disabled}
         />
         <div className="flex flex-row items-center justify-end">
-          <Send onClick={onClickSend} />
+          <Send onClick={onClickSend} disabled={disabled} />
         </div>
       </div>
     </>

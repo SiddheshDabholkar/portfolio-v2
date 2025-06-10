@@ -58,7 +58,7 @@ html {
   /* Chrome, Safari, and Opera */
 }
 
-&[aria-disabled="true"] {
+[aria-disabled="true"] {
   opacity: 0.5;
   cursor: not-allowed;
 }

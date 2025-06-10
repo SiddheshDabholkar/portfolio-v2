@@ -24,7 +24,27 @@ export default async function handler(
   res.flushHeaders();
 
   try {
-    const { id } = req.query;
+    const { details } = req.query;
+    const userId = (details && Array.isArray(details) && details[0]) ?? "";
+    const id = (details && Array.isArray(details) && details[1]) ?? "";
+
+    const { count } = await supabase
+      .from("message")
+      .select("id", { count: "exact" })
+      .eq("userId", userId);
+
+    console.log("count", count);
+
+    if (count && +count >= 7) {
+      sse({
+        data: "",
+        isError: false,
+        message: SSE.LIMIT_EXCEEDED,
+        res,
+        stopIt: true,
+      });
+      return;
+    }
 
     const { data, error: fetchError } = await supabase
       .from("message")
@@ -44,7 +64,7 @@ export default async function handler(
       });
       return;
     }
-    const { answer, question, userId } = messageDetail;
+    const { answer, question } = messageDetail;
 
     const stream = await groq.chat.completions.create({
       messages: [

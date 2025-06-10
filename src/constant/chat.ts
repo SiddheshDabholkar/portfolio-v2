@@ -3,6 +3,8 @@ import { socials } from "./contact";
 import { projects } from "./project";
 import { tech } from "./skills";
 
+const MESSAGES_LIMIT = 7;
+
 const formatLanguages = (): string => {
   return languages
     .map((lang) => `Language: ${lang.name}, Proficiency: ${lang.type}`)
@@ -103,4 +105,4 @@ Fallback Response:
 If unsure how to respond, say: “I’m here to showcase Siddhesh’s work! Could you specify if you’re curious about his projects, skills, or something else? Alternatively, scroll down to see more details in the portfolio!”
 `;
 
-export { fullInfo, systemPromtContent };
+export { fullInfo, systemPromtContent, MESSAGES_LIMIT };

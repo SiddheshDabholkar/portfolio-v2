@@ -42,8 +42,10 @@ const questions = [
   "Which backend framework you prefer?",
 ];
 
+
 const LOCALSTORAGE_KEYS = {
   QUESTION: "QUESTION",
+  LIMIT_EXCEEDED: "LIMIT_EXCEEDED",
 };
 
 export {
