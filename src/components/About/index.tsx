@@ -14,27 +14,24 @@ const About = () => {
       id={SectionIds.ABOUT}
       className="flex flex-col items-center justify-center w-full h-full min-h-screen"
     >
-      <SectionName text="About us" />
-      <div className="flex flex-row justify-start w-full gap-3 items-center">
-        <div className="h-[70px] w-[70px] rounded-full bg-red-200" />
-        <div>
-          <p className="text-[1.85rem] font-extrabold">{fullName}</p>
-          <p className=" text-[0.85rem] ">10 may 2001</p>
-        </div>
+      <SectionName text="About" />
+
+      <div className="flex flex-col items-center justify-center">
+        <div className="h-[100px] w-[100px] rounded-full bg-red-200" />
+        <p className=" text-[0.85rem] mt-2 ">10 may 2001</p>
+        <p className="text-[1.85rem] font-extrabold">{fullName}</p>
+        <p className="text-[0.8rem] w-10/12 text-center text-zinc-400">{bio}</p>
       </div>
 
-      <div className="mt-12">
-        <SectionHeader text="Bio" />
-        <p className="text-[0.8rem] text-zinc-400">{bio}</p>
-      </div>
       <div className="mt-12 w-full">
-        <SectionHeader text="Languages" />
-        <div className="flex flex-row items-center justify-start flex-wrap gap-3">
+        {/* <SectionHeader text="Languages" /> */}
+        <div className="flex flex-row items-center justify-center flex-wrap">
           {languages.map((m) => (
             <LanguageCard key={m.id} data={m} />
           ))}
         </div>
       </div>
+
       <div className="mt-12 w-full">
         <SectionHeader text="Education" />
         <div className="flex flex-row flex-wrap gap-3">
@@ -43,6 +40,7 @@ const About = () => {
           ))}
         </div>
       </div>
+
       <div className="mt-12 w-full">
         <SectionHeader text="Experience" />
         <div className="flex flex-row flex-wrap gap-3">

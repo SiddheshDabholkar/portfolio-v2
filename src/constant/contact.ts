@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 
-const contactHeading = "Get In Touch";
+const contactHeading = "Contact";
 const contactIntro =
   "Connect with me across various platforms. Whether you want to collaborate, discuss tech, or just say hello, I'm always open to meaningful conversations.";
 

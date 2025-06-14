@@ -11,8 +11,6 @@ const Contact = () => {
       id={SectionIds.CONTACT}
     >
       <SectionName text={contactHeading} />
-      {/* <h1 className="text-center text-2xl mb-2">{contactHeading}</h1> */}
-
       <p className="text-center w-3/4 text-[0.7rem] md:text-[0.9rem]">
         {contactIntro}
       </p>

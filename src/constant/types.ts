@@ -4,6 +4,7 @@ type languagesType = {
   id: number;
   name: string;
   type: string;
+  img: string;
 };
 
 type educationType = {

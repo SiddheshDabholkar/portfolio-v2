@@ -1,28 +1,32 @@
 import { fullName } from "./common";
 import { educationType, experiencesType, languagesType } from "./types";
 
-const bio = `I'm ${fullName}, a full-stack developer specializing in React Native  and MERN stack, with hands-on experience building scalable mobile and web apps. Currently, I'm diving into applied AI to enhance my development toolkit.`;
+const bio = ` Hi, I'm ${fullName}, Software Engineer with ~3 years of hands-on experience — including 1.5 years full-time and 1.5 years as a full-stack developer intern. I specialize in building scalable, high-performance web applications and cross platform app. I’m passionate about writing clean code, shipping fast, and constantly exploring better ways to solve real-world problems.`;
 
 const languages: languagesType[] = [
   {
     id: 1,
     name: "English",
-    type: "Full professional proficiency",
+    type: "Professional proficiency",
+    img: "/country/uk.jpg",
   },
   {
     id: 4,
     name: "Konkani",
     type: "Native",
+    img: "/country/in.jpg",
   },
   {
     id: 2,
     name: "Marathi",
-    type: "Full professional proficiency",
+    type: "Professional proficiency",
+    img: "/country/in.jpg",
   },
   {
     id: 3,
     name: "Hindi",
-    type: "Full professional proficiency",
+    type: "Professional proficiency",
+    img: "/country/in.jpg",
   },
 ];
 
