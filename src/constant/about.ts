@@ -38,6 +38,8 @@ const education: educationType[] = [
     degree: "SSC",
     startYear: 2006,
     endYear: 2017,
+    mapLocation: "https://maps.app.goo.gl/8WComqqdhpG91vUQ7",
+    img: "/education/hphss.png",
   },
   {
     id: 2,
@@ -46,14 +48,18 @@ const education: educationType[] = [
     degree: "HSSC",
     startYear: 2017,
     endYear: 2019,
+    mapLocation: "https://maps.app.goo.gl/8WComqqdhpG91vUQ7",
+    img: "/education/hphss.png",
   },
   {
-    id: 2,
+    id: 3,
     title: "Goa College of Engineering",
     location: "Farmagudi, Goa, India",
     degree: "Bachelor of Engineering in Information Technology",
     startYear: 2019,
     endYear: 2023,
+    mapLocation: "https://maps.app.goo.gl/eAFnKTwNqwo8yb2f8",
+    img: "/education/gec.png",
   },
 ];
 
@@ -66,6 +72,7 @@ const experiences: experiencesType[] = [
     startDate: "Jul 2021",
     endDate: "Sep 2021",
     location: "Remote",
+    companyUrl: "http://kalpas.in",
   },
   {
     id: 2,
@@ -75,6 +82,7 @@ const experiences: experiencesType[] = [
     startDate: "April 2022",
     endDate: "August 2023",
     location: "Remote",
+    companyUrl: "https://www.cloudbloq.io/",
   },
   {
     id: 3,
@@ -84,6 +92,7 @@ const experiences: experiencesType[] = [
     startDate: "August 2023",
     endDate: "curently working",
     location: "Remote",
+    companyUrl: "https://www.innerloop.stream/",
   },
 ];
 

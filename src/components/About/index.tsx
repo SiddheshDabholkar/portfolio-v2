@@ -7,6 +7,8 @@ import EducationCard from "./EducationCard";
 import ExperienceCard from "./ExperienceCard";
 import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
+import EducationAndExpeirence from "./Timeline";
+import EducationTimeline from "./EducationTimeline";
 
 const About = () => {
   return (
@@ -33,12 +35,7 @@ const About = () => {
       </div>
 
       <div className="mt-12 w-full">
-        <SectionHeader text="Education" />
-        <div className="flex flex-row flex-wrap gap-3">
-          {education.map((m) => (
-            <EducationCard data={m} key={m.id} />
-          ))}
-        </div>
+        <EducationTimeline />
       </div>
 
       <div className="mt-12 w-full">

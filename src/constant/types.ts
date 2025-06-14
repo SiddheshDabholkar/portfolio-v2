@@ -11,9 +11,11 @@ type educationType = {
   id: number;
   title: string;
   degree: string;
+  mapLocation: string;
   location: string;
   startYear: number;
   endYear: number;
+  img: string;
 };
 
 type experiencesType = {
@@ -24,6 +26,7 @@ type experiencesType = {
   startDate: string;
   endDate: string;
   location: string;
+  companyUrl: string;
 };
 
 type projectsType = {
