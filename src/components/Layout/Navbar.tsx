@@ -26,7 +26,10 @@ const Navbar = () => {
 
   return (
     <>
-      <header className="flex flex-row w-full md:w-3/6 items-center justify-between p-3 sticky top-0 rounded-full bg-zinc-900 px-3">
+      <header
+        className="flex flex-row w-full md:w-3/6 items-center justify-between p-3 sticky top-2 rounded-full bg-zinc-900 px-3 "
+        style={{ zIndex: 1000 }}
+      >
         <div className="hidden min-[400px]:flex flex-row gap-3 md:gap-4 pl-4">
           {navData.map((m, i) => (
             <Link

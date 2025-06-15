@@ -1,4 +1,5 @@
 import { ProjectType } from "@/constant/project";
+import { WorkType } from "./common";
 
 type languagesType = {
   id: number;
@@ -27,6 +28,8 @@ type experiencesType = {
   endDate: string;
   location: string;
   companyUrl: string;
+  img: string;
+  type: WorkType;
 };
 
 type projectsType = {

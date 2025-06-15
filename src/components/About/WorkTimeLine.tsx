@@ -1,9 +1,9 @@
-import { education } from "@/constant/about";
+import { experiences } from "@/constant/about";
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useRef } from "react";
-import EducationCard from "./EducationCard";
+import ExperienceCard from "./ExperienceCard";
 
-const EducationTimeline = () => {
+const WorkTimeLine = () => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -16,18 +16,23 @@ const EducationTimeline = () => {
     <div className="flex flex-col sm:flex-row w-full items-center justify-center gap-2">
       <div className="none sm:flex w-3/6  p-3 h-full flex flex-col items-center justify-center">
         <svg
-          xmlns="http://www.w3.org/2000/svg"
           height={60}
           width={60}
-          viewBox="0 0 52 52"
-          xmlSpace="preserve"
+          viewBox="0 0 36 36"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M25.8 26.7c-1.2.1-2.3-.4-3.5-.8-6.3-2.1-12.7-4.2-19-6.3-.4-.2-.7-.3-1-.6-.4-.3-.4-.7 0-1 .3-.2.7-.5 1.1-.6 6.8-2 13.5-4 20.3-6.1 1.5-.5 3.1-.5 4.7 0l20.1 6c.4.2.8.3 1.2.6.5.3.5.8 0 1.1-.3.2-.6.4-1 .5-6.7 2.2-13.4 4.5-20.2 6.7-.9.4-1.7.5-2.7.5m-13.3.3c-1-.2-1.2.4-1.2.9v7.6c0 .9.3 1.4.9 2 .2.2.5.4.7.6 1.6 1.1 3.5 1.8 5.4 2.3 3.8 1 7.6 1.2 11.5.7 2.5-.3 5-1 7.3-2 1-.5 2-1 2.7-1.8.5-.5.7-1 .6-1.7.1-2.4.1-4.9.1-7.4 0-1.4-1-1.2-1.4-1.1-3.5 1.2-7.2 2.3-10.7 3.5-1.8.6-3.5.6-5.2 0zm33.4-2.3c-.3.1-.4.2-.4.6v6.8c0 .2-.1.5-.2.7-.5 1.2-1 2.4-1.4 3.6-.4 1.1-.2 2.3.6 3.1.2.3.6.6.9.8.3.3.8.4 1.2.5.7.1 1.3-.3 1.8-.7.2-.2.5-.4.7-.7.6-.8.7-1.8.5-2.7-.3-1.4-.9-2.6-1.5-3.8-.2-.2-.2-.6-.2-.8v-7.4c0-.5-.4-.4-.6-.3z"
             fill="#fff"
+            d="M32 5H4a2 2 0 0 0-2 2v22a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2M4 7h28v2.2H4Zm0 22V10.8h28V29Z"
           />
+          <path fill="#fff" d="M17 23h6v2h-6z" />
+          <path
+            fill="#fff"
+            d="m7 15.68 6.79 3.12L7 21.91v2.2l9.6-4.41v-1.81L7 13.48z"
+          />
+          <path fill="none" d="M0 0h36v36H0z" />
         </svg>
-        <p className="text-center w-full text-[1rem]">Education</p>
+        <p className="text-center w-full text-[1rem]">Experience</p>
       </div>
       <div
         ref={ref}
@@ -39,8 +44,8 @@ const EducationTimeline = () => {
           style={{ height: beamHeight }}
         />
         <div className=" w-full flex flex-col gap-4 z-10 h-full bg-zinc-950 p-2 rounded-2xl relative">
-          {education.map((m) => (
-            <EducationCard data={m} key={m.id} />
+          {experiences.map((m) => (
+            <ExperienceCard data={m} key={m.id} />
           ))}
         </div>
       </div>
@@ -48,4 +53,4 @@ const EducationTimeline = () => {
   );
 };
 
-export default EducationTimeline;
+export default WorkTimeLine;

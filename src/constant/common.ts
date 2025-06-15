@@ -5,6 +5,11 @@ enum SectionIds {
   CONTACT = "contact",
 }
 
+enum WorkType {
+  INTERN = "INTERN",
+  FULL_TIME = "FULL_TIME",
+}
+
 const navData = [
   {
     id: SectionIds.CHAT,
@@ -42,7 +47,6 @@ const questions = [
   "Which backend framework you prefer?",
 ];
 
-
 const LOCALSTORAGE_KEYS = {
   QUESTION: "QUESTION",
   LIMIT_EXCEEDED: "LIMIT_EXCEEDED",
@@ -55,4 +59,5 @@ export {
   aiChatBotInfo,
   SectionIds,
   LOCALSTORAGE_KEYS,
+  WorkType,
 };
