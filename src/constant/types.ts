@@ -19,6 +19,14 @@ type educationType = {
   img: string;
 };
 
+type TechType = {
+  id: number;
+  name: string;
+  isBeginner: boolean;
+  description: string;
+  img: string;
+};
+
 type experiencesType = {
   id: number;
   name: string;
@@ -53,4 +61,5 @@ export type {
   experiencesType,
   projectsType,
   SkillType,
+  TechType,
 };

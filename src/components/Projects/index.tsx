@@ -3,6 +3,8 @@ import ProjectCard from "./ProjectCard";
 import { projects } from "@/constant/project";
 import SectionName from "../SectionName";
 import { SectionIds } from "@/constant/common";
+import { tech } from "@/constant/skills";
+import Image from "next/image";
 
 const Projects = () => {
   return (
