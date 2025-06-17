@@ -21,7 +21,7 @@ const CustomRichTextEditor: CustomRichTextEditorProps = ({
   const editor = useEditor({
     extensions: [StarterKit],
     content: value,
-    editable: disabled,
+    editable: !disabled,
     editorProps: {
       handleKeyDown(_, event) {
         if (event.key === "Enter") {
