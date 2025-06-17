@@ -9,6 +9,7 @@ import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
 import EducationTimeline from "./EducationTimeline";
 import WorkTimeLine from "./WorkTimeLine";
+import Image from "next/image";
 
 const About = () => {
   return (
@@ -19,7 +20,14 @@ const About = () => {
       <SectionName text="About" />
 
       <div className="flex flex-col items-center justify-center">
-        <div className="h-[100px] w-[100px] rounded-full bg-red-200" />
+        <Image
+          alt="Siddhesh dabholkar"
+          src="/user.jpg"
+          height={100}
+          width={100}
+          className="rounded-full"
+          objectFit="cover"
+        />
         <p className=" text-[0.85rem] mt-2 ">10 may 2001</p>
         <p className="text-[1.85rem] font-extrabold">{fullName}</p>
         <p className="text-[0.8rem] w-10/12 text-center text-zinc-400">{bio}</p>
