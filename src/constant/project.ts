@@ -10,11 +10,31 @@ const projects: projectsType[] = [
     id: 1,
     title: "Personal Portfolio",
     description:
-      "A dynamic and responsive personal portfolio website designed to showcase my skills, projects, and professional journey. Built with modern web technologies, this platform highlights my expertise in front-end development, UI/UX design, and creative problem-solving. The site features a clean, user-friendly interface with sections for project showcases, a detailed about page, and contact information, optimized for both desktop and mobile devices. The portfolio serves as a central hub to demonstrate my technical abilities and passion for creating impactful digital experiences.",
-    images: [],
-    githubUrl: "",
-    publicUrl: "",
+      "A dynamic and responsive personal portfolio website designed to showcase my skills, projects, and professional journey.It serves as a central hub to demonstrate my technical abilities and passion for creating impactful digital experiences.",
+    image: "/projects/portfolio.png",
+    githubUrl: "https://www.innerloop.stream/",
+    publicUrl: "https://www.innerloop.stream/",
     type: ProjectType.PERSONAL,
+    technologies: [
+      "Nextjs",
+      "Supabase",
+      "Reactjs",
+      "Groq",
+      "Tailwind",
+      "Framer-motion",
+      "Typescript",
+    ],
+  },
+  {
+    id: 2,
+    title: "Innerloop's landing page",
+    description:
+      "Developed Innerloop Stream AI, a cutting-edge platform that transforms media into personalized insights and stories. It empowers users with seamless, AI-driven content creation tools.",
+    image: "/projects/innerloop.png",
+    githubUrl: "",
+    publicUrl: "https://www.innerloop.stream/",
+    type: ProjectType.WORK,
+    technologies: ["Nextjs", "Express.js", "Scss", "Framer-motion"],
   },
 ];
 

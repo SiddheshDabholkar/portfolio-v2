@@ -44,10 +44,11 @@ type projectsType = {
   id: number;
   title: string;
   description: string;
-  images: string[];
+  image: string;
   githubUrl: string;
   publicUrl: string;
   type: ProjectType;
+  technologies: string[];
 };
 
 type SkillType = {

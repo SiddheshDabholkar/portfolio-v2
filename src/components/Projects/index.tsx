@@ -10,7 +10,7 @@ const Projects = () => {
   return (
     <div className="min-h-screen" id={SectionIds.PROJECT}>
       <SectionName text="Projects" />
-      <div>
+      <div className="flex flex-row flex-wrap items-stretch">
         {projects.map((m) => (
           <ProjectCard data={m} />
         ))}

@@ -36,7 +36,7 @@ const navData = [
 const firstName = "Siddhesh";
 const fullName = `${firstName} Dabholkar`;
 
-const aiChatBotInfo = `Hi! I'm ${firstName}'s AI assistant. Ask about my skills, projects,
+const aiChatBotInfo = `Hi! Ask about my skills, projects,
 education, or scroll for details!`;
 
 const questions = [
