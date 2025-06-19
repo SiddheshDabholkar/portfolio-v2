@@ -1,13 +1,7 @@
-import {
-  NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  NEXT_PUBLIC_SUPABASE_URL,
-} from "@/constant/envs";
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from "@/constant/envs";
 import { createClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  NEXT_PUBLIC_SUPABASE_URL,
-  NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
+const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 type handleCreateMessageProps = {
   question: string;
