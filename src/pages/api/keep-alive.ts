@@ -2,6 +2,7 @@ import { supabase } from "@/utils/supabase";
 import { FormatResponse } from "@/utils/response";
 import { RESPONSE_MESSAGES } from "@/constant/messages";
 import { NextApiRequest, NextApiResponse } from "next";
+import { CRON_SECRET } from "@/constant/envs";
 
 export default async function handler(
   req: NextApiRequest,
@@ -10,6 +11,12 @@ export default async function handler(
   if (req.method !== "GET") {
     res.status(405).json({ error: "Method not allowed" });
     return;
+  }
+  const headerValueToCheck = `Bearer ${CRON_SECRET}`;
+  const headerValue = req.headers.authorization ?? null;
+
+  if (headerValue !== headerValueToCheck) {
+    return res.status(401).end("Unauthorized");
   }
   try {
     const { data, error } = await supabase.from("user").select("ip").limit(1);
