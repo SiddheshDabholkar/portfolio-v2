@@ -90,7 +90,7 @@ const ChatDetails = () => {
         <Navbar />
         <div className="flex flex-col overflow-y-scroll h-full w-full justify-end p-2 scrollbar-hide my-2 md:w-8/12">
           {messages.map((m) => (
-            <>
+            <div className="h-full w-full flex flex-col">
               <Message isBot={false} message={m.question} />
               <Message
                 id={m.id}
@@ -120,7 +120,7 @@ const ChatDetails = () => {
                   );
                 }}
               />
-            </>
+            </div>
           ))}
           {isLimitExceeded && <LimitExceeded />}
         </div>

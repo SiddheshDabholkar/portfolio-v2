@@ -9,7 +9,7 @@ const Skills = () => {
       <SectionName text="Skills" />
       <div className="flex flex-row w-full flex-wrap gap-3 items-center justify-center mb-10">
         {tech.map((m) => (
-          <SkillCard data={m} />
+          <SkillCard key={m.id} data={m} />
         ))}
       </div>
     </div>

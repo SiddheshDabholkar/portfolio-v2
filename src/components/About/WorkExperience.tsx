@@ -27,7 +27,7 @@ const WorkExperience = () => {
       </div>
       <div className="w-full md:w-8/12  gap-4 flex flex-col">
         {experiences.map((m) => (
-          <WorkCard data={m} />
+          <WorkCard data={m} key={m.id}/>
         ))}
       </div>
     </div>

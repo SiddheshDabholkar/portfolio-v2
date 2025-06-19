@@ -19,6 +19,7 @@ const Contact = () => {
           const Icon = m.icon;
           return (
             <Link
+              key={m.id}
               className="text-[2rem] h-[50px] w-[50px] bg-zinc-800 flex items-center justify-center rounded-full p-3"
               href={!m.isUrl ? `mailto:${m.href}` : m.href}
             >

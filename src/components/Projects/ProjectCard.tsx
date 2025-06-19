@@ -18,7 +18,7 @@ const ProjectCard: ProjectCardProps = ({ data }) => {
         <h1 className="text-[1.5rem] font-bold mb-2">{data.title}</h1>
         <div className="flex flex-row flex-wrap gap-2 mb-4 ">
           {data.technologies.map((m) => (
-            <span className="bg-zinc-800  text-nowrap text-[0.75rem] px-2 rounded-lg">
+            <span key={m} className="bg-zinc-800  text-nowrap text-[0.75rem] px-2 rounded-lg">
               {m}
             </span>
           ))}
