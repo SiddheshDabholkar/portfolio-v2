@@ -1,15 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import { bio, education, experiences, languages } from "@/constant/about";
+import { bio, languages } from "@/constant/about";
 import React from "react";
 import LanguageCard from "./LanguageCard";
-import SectionHeader from "./SectionHeader";
-import EducationCard from "./EducationCard";
-import ExperienceCard from "./ExperienceCard";
 import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
-import EducationTimeline from "./EducationTimeline";
-import WorkTimeLine from "./WorkTimeLine";
 import Image from "next/image";
+import WorkExperience from "./WorkExperience";
 
 const About = () => {
   return (
@@ -33,7 +29,7 @@ const About = () => {
         <p className="text-[0.8rem] w-10/12 text-center text-zinc-400">{bio}</p>
       </div>
 
-      <div className="mt-12 w-full">
+      <div className="mt-6 w-full">
         <div className="flex flex-row items-center justify-center flex-wrap">
           {languages.map((m) => (
             <LanguageCard key={m.id} data={m} />
@@ -41,12 +37,8 @@ const About = () => {
         </div>
       </div>
 
-      <div className="mt-12 w-full">
-        <EducationTimeline />
-      </div>
-
-      <div className="mt-12 w-full">
-        <WorkTimeLine />
+      <div className="mt-6 w-full">
+        <WorkExperience />
       </div>
     </div>
   );

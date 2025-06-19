@@ -8,7 +8,7 @@ type LanguageCardProps = React.FC<{
 const LanguageCard: LanguageCardProps = ({ data }) => {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/4 p-2">
-      <div className="border border-zinc-700 flex flex-row items-center justify-start gap-3 rounded-full p-2 ">
+      <div className="border border-zinc-900 flex flex-row items-center justify-start gap-3 rounded-full p-2 ">
         <div
           style={{
             height: 40,

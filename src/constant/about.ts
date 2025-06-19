@@ -1,9 +1,5 @@
 import { fullName, WorkType } from "./common";
-import {
-  educationType,
-  experiencesType,
-  languagesType,
-} from "./types";
+import { educationType, experiencesType, languagesType } from "./types";
 
 const bio = ` Hi, I'm ${fullName}, Software Engineer with ~3 years of hands-on experience — including 1.5 years full-time and 1.5 years as a full-stack developer intern. I specialize in building scalable, high-performance web applications and cross platform app. I’m passionate about writing clean code, shipping fast, and constantly exploring better ways to solve real-world problems.`;
 
@@ -70,7 +66,7 @@ const education: educationType[] = [
 const experiences: experiencesType[] = [
   {
     id: 1,
-    name: "Kalpas Innovations Pvt. Ltd.",
+    name: "Kalpas Innovations",
     position: "React Developer Intern",
     linkedInUrl: "https://www.linkedin.com/company/kalpas-innovations",
     startDate: "Jul 2021",
