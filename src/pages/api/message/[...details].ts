@@ -20,6 +20,7 @@ export default async function handler(
 
   res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
   res.setHeader("Cache-Control", "no-cache, no-transform");
+  res.setHeader("Content-Encoding", "none");
   res.setHeader("Connection", "keep-alive");
   res.flushHeaders();
 
