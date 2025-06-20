@@ -1,4 +1,5 @@
-export const maxDuration = 60;
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 import { systemPromtContent } from "@/constant/chat";
 import { RESPONSE_MESSAGES, SSE } from "@/constant/messages";
