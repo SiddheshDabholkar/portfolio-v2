@@ -1,6 +1,3 @@
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
-
 import { systemPromtContent } from "@/constant/chat";
 import { RESPONSE_MESSAGES, SSE } from "@/constant/messages";
 import { sse } from "@/utils/sse";
@@ -21,11 +18,16 @@ export default async function handler(
     return;
   }
 
-  res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
-  res.setHeader("Cache-Control", "no-cache, no-transform");
-  res.setHeader("Content-Encoding", "none");
-  res.setHeader("Connection", "keep-alive");
-  res.flushHeaders();
+  res.writeHead(200, {
+    "Content-Type": "application/octet-stream",
+    "Transfer-Encoding": "chunked",
+  });
+
+  // res.setHeader("Content-Type", "text/event-stream; charset=utf-8");
+  // res.setHeader("Cache-Control", "no-cache, no-transform");
+  // res.setHeader("Content-Encoding", "none");
+  // res.setHeader("Connection", "keep-alive");
+  // res.flushHeaders();
 
   try {
     const { details } = req.query;

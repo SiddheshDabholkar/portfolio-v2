@@ -26,32 +26,69 @@ const Message: MessageProps = ({
   }, [message]);
 
   useEffect(() => {
-    if (id && userId && !localMessage) {
-      const eventSource = new EventSource(
-        `${NEXT_PUBLIC_API_URL}message/${userId}/${id}`
-      );
-      eventSource.onmessage = (e) => {
-        const serverText = e.data;
-        const parsedData = JSON.parse(serverText);
-        const { data, isError, message } = parsedData;
-        if (isError) {
-          eventSource.close();
-        } else {
-          if (message === SSE.COMPLETED) {
-            eventSource.close();
-          } else if (message === SSE.LIMIT_EXCEEDED) {
-            eventSource.close();
-            onLimitExceed && onLimitExceed();
-          } else if (message === SSE.FAILED) {
-            eventSource.close();
-          } else {
-            onMessageUpdate && onMessageUpdate(data);
+    const handleGetMessage = async () => {
+      try {
+        const response = await fetch(
+          `${NEXT_PUBLIC_API_URL}message/${userId}/${id}`
+        );
+        const stream = response.body;
+        const reader = stream?.getReader();
+        const decoder = new TextDecoder();
+
+        if (reader) {
+          try {
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) {
+                break;
+              }
+              const decodedValue = decoder.decode(value, { stream: true });
+              const entries = decodedValue.trim().split("\n\n");
+
+              for (const entry of entries) {
+                if (!entry.trim()) continue;
+
+                try {
+                  const parsedData = JSON.parse(entry);
+                  const { data, isError, message } = parsedData;
+
+                  if (isError || message === SSE.FAILED) {
+                    reader.releaseLock();
+                    return;
+                  }
+
+                  if (message === SSE.LIMIT_EXCEEDED) {
+                    reader.releaseLock();
+                    onLimitExceed && onLimitExceed();
+                    return;
+                  }
+
+                  if (message === SSE.COMPLETED) {
+                    reader.releaseLock();
+                    return;
+                  }
+                  onMessageUpdate && onMessageUpdate(data);
+                } catch (err) {
+                  console.error("Parse error:", err, "Entry:", entry);
+                }
+              }
+            }
+          } catch (error) {
+            console.error(error);
+          } finally {
+            reader.releaseLock();
           }
         }
-      };
-      return () => {
-        eventSource.close();
-      };
+      } catch (error) {
+        console.error(
+          "Something went wrong in handleGetMessage due to ",
+          error
+        );
+      }
+    };
+
+    if (id && userId && !localMessage) {
+      handleGetMessage();
     }
   }, [id, localMessage, userId]);
 

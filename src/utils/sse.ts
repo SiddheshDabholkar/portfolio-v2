@@ -23,7 +23,7 @@ const sse = ({
       message,
     })
   );
-  res.write(`data: ${stringified}\n\n`);
+  res.write(`${stringified}\n\n`);
   if (stopIt) {
     res.end();
   }
