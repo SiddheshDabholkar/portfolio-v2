@@ -1,3 +1,5 @@
+export const maxDuration = 60;
+
 import { systemPromtContent } from "@/constant/chat";
 import { RESPONSE_MESSAGES, SSE } from "@/constant/messages";
 import { sse } from "@/utils/sse";
