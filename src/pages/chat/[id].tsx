@@ -8,7 +8,7 @@ import { LOCALSTORAGE_KEYS } from "@/constant/common";
 import axiosInstance from "@/utils/axios";
 import { getParsed } from "@/utils/common";
 import { useParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
 
 type SingleMessageType = {
@@ -27,6 +27,13 @@ const ChatDetails = () => {
 
   const [question, setQuestion] = useState("");
   const [isLimitExceeded, setIsLimitExceeded] = useState(false);
+  const messagesCont = useRef<HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    if (messagesCont.current) {
+      messagesCont.current.scrollTop = messagesCont.current.scrollHeight;
+    }
+  };
 
   console.log("isLimitExceeded", isLimitExceeded);
 
@@ -41,6 +48,7 @@ const ChatDetails = () => {
           answer: "",
         },
       ]);
+      scrollToBottom();
       const { data } = await axiosInstance.post(
         "create-message",
         {
@@ -62,6 +70,7 @@ const ChatDetails = () => {
             return m;
           })
         );
+        scrollToBottom();
       } else {
       }
       setIsSending(false);
@@ -88,41 +97,46 @@ const ChatDetails = () => {
     <RootLayout>
       <div className="w-full h-[97vh] flex flex-col items-center justify-between">
         <Navbar />
-        <div className="flex flex-col overflow-y-scroll h-full w-full justify-end p-2 scrollbar-hide my-2 md:w-8/12">
-          {messages.map((m) => (
-            <div className="h-full w-full flex flex-col">
-              <Message isBot={false} message={m.question} />
-              <Message
-                id={m.id}
-                isBot
-                userId={id}
-                message={m?.answer ?? ""}
-                onLimitExceed={() => {
-                  console.log("onLimitExceed called");
-                  localStorage.setItem(
-                    LOCALSTORAGE_KEYS.LIMIT_EXCEEDED,
-                    "true"
-                  );
-                  setIsLimitExceeded(true);
-                }}
-                onMessageUpdate={(mess) => {
-                  setMessages((prev) =>
-                    prev.map((m, i) => {
-                      if (i === prev.length - 1) {
-                        const sanitizedAnswer = m?.answer ?? "";
-                        return {
-                          ...m,
-                          answer: sanitizedAnswer + mess,
-                        };
-                      }
-                      return m;
-                    })
-                  );
-                }}
-              />
-            </div>
-          ))}
-          {isLimitExceeded && <LimitExceeded />}
+        <div className="flex flex-col overflow-hidden h-full w-full justify-end p-2 scrollbar-hide my-2 md:w-8/12">
+          <div
+            className="flex flex-col overflow-y-scroll scrollbar-hide w-full h-full "
+            ref={messagesCont}
+          >
+            {messages.map((m) => (
+              <div className="w-full flex flex-col">
+                <Message isBot={false} message={m.question} />
+                <Message
+                  id={m.id}
+                  isBot
+                  userId={id}
+                  message={m?.answer ?? ""}
+                  onLimitExceed={() => {
+                    console.log("onLimitExceed called");
+                    localStorage.setItem(
+                      LOCALSTORAGE_KEYS.LIMIT_EXCEEDED,
+                      "true"
+                    );
+                    setIsLimitExceeded(true);
+                  }}
+                  onMessageUpdate={(mess) => {
+                    setMessages((prev) =>
+                      prev.map((m, i) => {
+                        if (i === prev.length - 1) {
+                          const sanitizedAnswer = m?.answer ?? "";
+                          return {
+                            ...m,
+                            answer: sanitizedAnswer + mess,
+                          };
+                        }
+                        return m;
+                      })
+                    );
+                  }}
+                />
+              </div>
+            ))}
+            {isLimitExceeded && <LimitExceeded />}
+          </div>
         </div>
         <footer className="w-full flex flex-col items-center">
           <ChatInput
