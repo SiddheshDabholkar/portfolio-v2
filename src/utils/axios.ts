@@ -1,8 +1,9 @@
 // lib/axios.js
+import { NEXT_PUBLIC_API_URL } from "@/constant/envs";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: NEXT_PUBLIC_API_URL,
   timeout: 50000,
 });
 

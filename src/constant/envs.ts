@@ -1,9 +1,9 @@
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY!;
-const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL!;
 const SUPABASE_URL = process.env.SUPABASE_URL!;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY!;
 const GROQ_API_KEY = process.env.GROQ_API_KEY!;
 const CRON_SECRET = process.env.CRON_SECRET!;
+const NEXT_PUBLIC_API_URL = `${window.location.origin}/api/`;
 
 export {
   GEMINI_API_KEY,
