@@ -1,16 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
 import { bio, languages } from "@/constant/about";
-import React from "react";
+import React, { useRef } from "react";
 import LanguageCard from "./LanguageCard";
 import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
 import Image from "next/image";
-import WorkExperience from "./WorkExperience";
+import Timeline from "./Timeline";
+import { useScroll, useTransform } from "framer-motion";
 
 const About = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start", "end"],
+  });
+  const beamHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   return (
     <div
       id={SectionIds.ABOUT}
+      ref={sectionRef}
       className="flex flex-col items-center justify-center w-full h-full min-h-screen mb-20"
     >
       <SectionName text="About" />
@@ -38,7 +46,7 @@ const About = () => {
       </div>
 
       <div className="mt-6 w-full">
-        <WorkExperience />
+        <Timeline beamHeight={beamHeight} />
       </div>
     </div>
   );
