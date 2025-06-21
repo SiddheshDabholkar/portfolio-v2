@@ -10,6 +10,7 @@ type MessageProps = React.FC<{
   userId?: string;
   onMessageUpdate?: (message: string) => void;
   onLimitExceed?: () => void;
+  onFailure?: () => void;
 }>;
 const Message: MessageProps = ({
   id,
@@ -17,9 +18,11 @@ const Message: MessageProps = ({
   message,
   onMessageUpdate,
   userId,
-  onLimitExceed,
+  onLimitExceed = () => {},
+  onFailure = () => {},
 }) => {
   const [localMessage, setLocalMessage] = useState(message ?? "");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setLocalMessage(message);
@@ -35,6 +38,14 @@ const Message: MessageProps = ({
         const reader = stream?.getReader();
         const decoder = new TextDecoder();
 
+        const handleError = () => {
+          onFailure();
+          setIsLoading(false);
+          if (reader) {
+            reader.releaseLock();
+          }
+        };
+
         if (reader) {
           try {
             while (true) {
@@ -44,6 +55,7 @@ const Message: MessageProps = ({
               }
               const decodedValue = decoder.decode(value, { stream: true });
               const entries = decodedValue.trim().split("\n\n");
+              setIsLoading(false);
 
               for (const entry of entries) {
                 if (!entry.trim()) continue;
@@ -54,6 +66,7 @@ const Message: MessageProps = ({
 
                   if (isError || message === SSE.FAILED) {
                     reader.releaseLock();
+                    handleError();
                     return;
                   }
 
@@ -69,17 +82,23 @@ const Message: MessageProps = ({
                   }
                   onMessageUpdate && onMessageUpdate(data);
                 } catch (err) {
+                  handleError();
                   console.error("Parse error:", err, "Entry:", entry);
                 }
               }
             }
           } catch (error) {
             console.error(error);
+            handleError();
           } finally {
-            reader.releaseLock();
+            handleError();
           }
+        } else {
+          onFailure();
         }
       } catch (error) {
+        onFailure();
+        setIsLoading(false);
         console.error(
           "Something went wrong in handleGetMessage due to ",
           error
@@ -98,6 +117,18 @@ const Message: MessageProps = ({
     }
     return "max-w-10/12  md:max-w-6/12 bg-zinc-900";
   }, [isBot]);
+
+  if (isBot && isLoading) {
+    return (
+      <div className=" rounded-lg shadow-md p-6 w-full">
+        <div className="animate-pulse space-y-3">
+          <div className="h-4 bg-zinc-800 rounded"></div>
+          <div className="h-4 bg-zinc-800 rounded w-5/6"></div>
+          <div className="h-4 bg-zinc-800 rounded w-4/6"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full mb-4 flex flex-row items-center justify-end">
