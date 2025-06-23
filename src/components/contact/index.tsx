@@ -3,6 +3,7 @@ import SectionName from "../SectionName";
 import { contactHeading, contactIntro, socials } from "@/constant/contact";
 import Link from "next/link";
 import { SectionIds } from "@/constant/common";
+import SocialIcon from "./SocialIcon";
 
 const Contact = () => {
   return (
@@ -15,17 +16,9 @@ const Contact = () => {
         {contactIntro}
       </p>
       <div className="flex flex-row flex-wrap gap-3 mt-6 items-center justify-center">
-        {socials.map((m) => {
+        {socials.map((m, i) => {
           const Icon = m.icon;
-          return (
-            <Link
-              key={m.id}
-              className="text-[2rem] h-[50px] w-[50px] bg-zinc-800 flex items-center justify-center rounded-full p-3"
-              href={!m.isUrl ? `mailto:${m.href}` : m.href}
-            >
-              <Icon />
-            </Link>
-          );
+          return <SocialIcon data={m} index={i} />;
         })}
       </div>
     </div>

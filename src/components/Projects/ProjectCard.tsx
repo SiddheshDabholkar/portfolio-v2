@@ -1,13 +1,29 @@
 import { projectsType } from "@/constant/types";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 
 type ProjectCardProps = React.FC<{
   data: projectsType;
+  index: number;
 }>;
-const ProjectCard: ProjectCardProps = ({ data }) => {
+const ProjectCard: ProjectCardProps = ({ data, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
-    <div className="flex mb-4 w-full flex-col lg:flex-row justify-between  h-full  rounded-xl p-4 gap-4">
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.05,
+        ease: "easeOut",
+      }}
+      className="flex mb-4 w-full flex-col lg:flex-row justify-between  h-full  rounded-xl p-4 gap-4"
+    >
       <div className="w-full h-[300px] lg:h-auto lg:w-5/12 p-6 bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-lg">
         <div className="h-full w-full p-4 relative">
           <Image objectFit="contain" fill alt={data.title} src={data.image} />
@@ -18,7 +34,10 @@ const ProjectCard: ProjectCardProps = ({ data }) => {
         <h1 className="text-[1.5rem] font-bold mb-2">{data.title}</h1>
         <div className="flex flex-row flex-wrap gap-2 mb-4 ">
           {data.technologies.map((m) => (
-            <span key={m} className="bg-zinc-800  text-nowrap text-[0.75rem] px-2 rounded-lg">
+            <span
+              key={m}
+              className="bg-zinc-800  text-nowrap text-[0.75rem] px-2 rounded-lg"
+            >
               {m}
             </span>
           ))}
@@ -43,7 +62,7 @@ const ProjectCard: ProjectCardProps = ({ data }) => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

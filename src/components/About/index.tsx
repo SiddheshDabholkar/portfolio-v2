@@ -33,9 +33,15 @@ const About = () => {
           className="rounded-full"
           objectFit="cover"
         />
-        <p className=" text-[0.85rem] mt-2 ">10 may 2001</p>
-        <p className="text-[1.85rem] font-extrabold">{fullName}</p>
-        <p className="text-[0.8rem] w-10/12 text-center text-zinc-400">{bio}</p>
+        <p className="text-center text-[0.75rem] md:text-[0.85rem] mt-2 ">
+          10 may 2001
+        </p>
+        <p className="text-[1.65rem] md:text-[1.85rem] text-center font-extrabold">
+          {fullName}
+        </p>
+        <p className="text-[0.75rem] mt-2 md:text-[0.8rem] w-10/12 text-center text-zinc-400">
+          {bio}
+        </p>
       </div>
 
       <div className="mt-6 w-full">

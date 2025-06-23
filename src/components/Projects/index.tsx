@@ -9,8 +9,8 @@ const Projects = () => {
     <div className="min-h-screen" id={SectionIds.PROJECT}>
       <SectionName text="Projects" />
       <div className="flex flex-col gap-8">
-        {projects.map((m) => (
-          <ProjectCard key={m.id} data={m} />
+        {projects.map((m, i) => (
+          <ProjectCard index={i} key={m.id} data={m} />
         ))}
       </div>
     </div>

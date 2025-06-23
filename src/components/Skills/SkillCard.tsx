@@ -19,7 +19,7 @@ const SkillCard: SkillCardProps = ({ data, index }) => {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{
         duration: 0.4,
-        delay: index * 0.01,
+        delay: index * 0.05,
         ease: "easeOut",
       }}
       className="flex h-[150px] w-[110px] rounded-xl flex-col border border-zinc-900 items-center justify-between p-1"

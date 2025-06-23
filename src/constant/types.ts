@@ -1,6 +1,7 @@
 import { ProjectType } from "@/constant/project";
 import { WorkType } from "./common";
 import { timeLineDataType } from "./about";
+import { IconType } from "react-icons";
 
 type languagesType = {
   id: number;
@@ -65,7 +66,16 @@ type TimeLineType = {
   data: educationType | experiencesType;
 };
 
+type SocialType = {
+  id: number;
+  name: string;
+  href: string;
+  icon: IconType;
+  isUrl: boolean;
+};
+
 export type {
+  SocialType,
   languagesType,
   educationType,
   experiencesType,
