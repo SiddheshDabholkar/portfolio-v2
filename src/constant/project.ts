@@ -12,8 +12,8 @@ const projects: projectsType[] = [
     description:
       "A dynamic and responsive personal portfolio website designed to showcase my skills, projects, and professional journey.It serves as a central hub to demonstrate my technical abilities and passion for creating impactful digital experiences.",
     image: "/projects/portfolio.png",
-    githubUrl: "https://www.innerloop.stream/",
-    publicUrl: "https://www.innerloop.stream/",
+    githubUrl: "https://github.com/SiddheshDabholkar/portfolio-v2",
+    publicUrl: "https://iamsiddhesh.vercel.app/",
     type: ProjectType.PERSONAL,
     technologies: [
       "Nextjs",
