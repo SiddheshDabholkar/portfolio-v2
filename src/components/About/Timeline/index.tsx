@@ -10,6 +10,7 @@ import {
   useSpring,
   MotionValue,
 } from "framer-motion";
+import TimeLineCard from "./TimeLineCard";
 
 type TimelineProps = React.FC<{
   beamHeight: MotionValue<string>;
@@ -55,62 +56,8 @@ const Timeline: TimelineProps = ({ beamHeight }) => {
           <div className="w-8/12">&nbsp;</div>
         </div>
       </motion.div>
-      {timeLine.map((m) => (
-        <div
-          key={m.id}
-          className="w-full flex flex-row items-center justify-between mb-12 z-10"
-        >
-          <div className="w-2/12">
-            <p className="text-[0.75rem] text-zinc-500">{m.date}</p>
-          </div>
-          <div className="relative flex items-center justify-center">
-            {/* Outer ring with pulse */}
-            <motion.div
-              className="absolute w-6 h-6 rounded-full border-2 border-blue-400/30"
-              animate={{
-                scale: [1, 1.2, 1],
-                opacity: [0.3, 0.6, 0.3],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: m.id * 0.2,
-              }}
-            />
-
-            {/* Main dot with gradient */}
-            <motion.div
-              className="relative w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 shadow-lg"
-              whileHover={{ scale: 1.3 }}
-              transition={{ duration: 0.2 }}
-            >
-              {/* Inner glow */}
-              <div className="absolute inset-0.5 bg-white/40 rounded-full" />
-            </motion.div>
-          </div>
-          <div className="w-8/12">
-            <p className="bg-zinc-800 text-[0.65rem] rounded-xl px-2 p-[2px] max-w-fit">
-              {m.type}
-            </p>
-            {m.description && (
-              <p className="text-[0.75rem] my-1 text-zinc-500">
-                {m.description}
-              </p>
-            )}
-            {m.type === timeLineDataType.WORK ? (
-              <>
-                <WorkCard data={m.data as experiencesType} />
-              </>
-            ) : m.type === timeLineDataType.EDUCATION ? (
-              <>
-                <EducationCard data={m.data as educationType} />
-              </>
-            ) : (
-              <></>
-            )}
-          </div>
-        </div>
+      {timeLine.map((m, i) => (
+        <TimeLineCard index={i} key={i} data={m} />
       ))}
     </div>
   );

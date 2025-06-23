@@ -8,8 +8,8 @@ const Skills = () => {
     <div className="min-h-screen flex flex-col items-center justify-center">
       <SectionName text="Skills" />
       <div className="flex flex-row w-full flex-wrap gap-3 items-center justify-center mb-10">
-        {tech.map((m) => (
-          <SkillCard key={m.id} data={m} />
+        {tech.map((m, i) => (
+          <SkillCard index={i} key={m.id} data={m} />
         ))}
       </div>
     </div>

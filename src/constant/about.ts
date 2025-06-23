@@ -1,5 +1,10 @@
 import { fullName, WorkType } from "./common";
-import { educationType, experiencesType, languagesType } from "./types";
+import {
+  educationType,
+  experiencesType,
+  languagesType,
+  TimeLineType,
+} from "./types";
 
 const bio = ` Hi, I'm ${fullName}, Software Engineer with ~3 years of hands-on experience — including 1.5 years full-time and 1.5 years as a full-stack developer intern. I specialize in building scalable, high-performance web applications and cross platform app. I’m passionate about writing clean code, shipping fast, and constantly exploring better ways to solve real-world problems.`;
 
@@ -30,29 +35,18 @@ const languages: languagesType[] = [
   },
 ];
 
-const sscInfo = {
+const sscInfo: educationType = {
   id: 1,
   title: "Harmal panchakroshi shikshan mandal",
   location: "Arambol, Goa, India",
-  degree: "SSC",
+  degree: "SSC & HSSC",
   startYear: 2006,
-  endYear: 2017,
-  mapLocation: "https://maps.app.goo.gl/8WComqqdhpG91vUQ7",
-  img: "/education/hphss.png",
-};
-
-const hsscInfo = {
-  id: 2,
-  title: "Harmal panchakroshi higher secondary school",
-  location: "Arambol, Goa, India",
-  degree: "HSSC",
-  startYear: 2017,
   endYear: 2019,
   mapLocation: "https://maps.app.goo.gl/8WComqqdhpG91vUQ7",
   img: "/education/hphss.png",
 };
 
-const gecInfo = {
+const gecInfo: educationType = {
   id: 3,
   title: "Goa College of Engineering",
   location: "Farmagudi, Goa, India",
@@ -63,9 +57,9 @@ const gecInfo = {
   img: "/education/gec.png",
 };
 
-const education: educationType[] = [sscInfo, hsscInfo, gecInfo];
+const education: educationType[] = [sscInfo, gecInfo];
 
-const KalpasInfo = {
+const KalpasInfo: experiencesType = {
   id: 1,
   name: "Kalpas Innovations",
   position: "React Developer Intern",
@@ -78,7 +72,7 @@ const KalpasInfo = {
   type: WorkType.INTERN,
 };
 
-const cloudBloqInfo = {
+const cloudBloqInfo: experiencesType = {
   id: 2,
   name: "CloudBloq",
   position: "Full Stack Developer Intern",
@@ -91,7 +85,7 @@ const cloudBloqInfo = {
   type: WorkType.INTERN,
 };
 
-const innerloopInfo = {
+const innerloopInfo: experiencesType = {
   id: 3,
   name: "Innerloop Streaming AI",
   position: "Full Stack Developer",
@@ -116,13 +110,7 @@ enum timeLineDataType {
   EDUCATION = "EDUCATION",
 }
 
-const timeLine = [
-  // {
-  //   id: 1,
-  //   date: "10 may 2001",
-  //   description: "Birthday",
-  //   type: timeLineDataType.BIRTHDAY,
-  // },
+const timeLine: TimeLineType[] = [
   {
     id: 2,
     date: "june 2006",
@@ -130,27 +118,6 @@ const timeLine = [
     type: timeLineDataType.EDUCATION,
     data: sscInfo,
   },
-  // {
-  //   id: 3,
-  //   date: "june 2017",
-  //   description: `Completed studying in ${sscInfo.title}`,
-  //   type: timeLineDataType.EDUCATION,
-  //   data: sscInfo,
-  // },
-  {
-    id: 4,
-    date: "July 2017",
-    description: `Started studying in ${hsscInfo.title}`,
-    type: timeLineDataType.EDUCATION,
-    data: hsscInfo,
-  },
-  // {
-  //   id: 5,
-  //   date: "May 2019",
-  //   description: `Completed studying in ${hsscInfo.title}`,
-  //   type: timeLineDataType.EDUCATION,
-  //   data: hsscInfo,
-  // },
   {
     id: 6,
     date: "August 2019",
@@ -165,13 +132,6 @@ const timeLine = [
     type: timeLineDataType.WORK,
     data: KalpasInfo,
   },
-  // {
-  //   id: 8,
-  //   date: KalpasInfo.endDate,
-  //   description: `Completed 2 months of internship at ${KalpasInfo.name}`,
-  //   type: timeLineDataType.WORK,
-  //   data: KalpasInfo,
-  // },
   {
     id: 9,
     date: cloudBloqInfo.startDate,
@@ -179,13 +139,6 @@ const timeLine = [
     type: timeLineDataType.WORK,
     data: cloudBloqInfo,
   },
-  // {
-  //   id: 10,
-  //   date: cloudBloqInfo.endDate,
-  //   description: `Completed 1 year and 6 month as an full stack developer intern at ${cloudBloqInfo.name}`,
-  //   type: timeLineDataType.WORK,
-  //   data: cloudBloqInfo,
-  // },
   {
     id: 11,
     date: "August 2023",
@@ -200,13 +153,6 @@ const timeLine = [
     type: timeLineDataType.WORK,
     data: innerloopInfo,
   },
-  // {
-  //   id: 13,
-  //   date: new Date().toDateString(),
-  //   description: `Currently working as an Fullstack developer`,
-  //   type: timeLineDataType.WORK,
-  //   data: innerloopInfo,
-  // },
 ];
 
 export { bio, languages, education, experiences, timeLine, timeLineDataType };

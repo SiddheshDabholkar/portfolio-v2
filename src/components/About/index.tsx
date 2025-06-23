@@ -6,7 +6,7 @@ import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
 import Image from "next/image";
 import Timeline from "./Timeline";
-import { useScroll, useTransform } from "framer-motion";
+import { useScroll, useTransform, useInView, motion } from "framer-motion";
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -15,8 +15,9 @@ const About = () => {
     offset: ["start", "end"],
   });
   const beamHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <div
+    <motion.div
       id={SectionIds.ABOUT}
       ref={sectionRef}
       className="flex flex-col items-center justify-center w-full h-full min-h-screen mb-20"
@@ -48,7 +49,7 @@ const About = () => {
       <div className="mt-6 w-full">
         <Timeline beamHeight={beamHeight} />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

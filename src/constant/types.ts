@@ -1,5 +1,6 @@
 import { ProjectType } from "@/constant/project";
 import { WorkType } from "./common";
+import { timeLineDataType } from "./about";
 
 type languagesType = {
   id: number;
@@ -56,6 +57,14 @@ type SkillType = {
   name: string;
 };
 
+type TimeLineType = {
+  id: number;
+  date: string;
+  description: string;
+  type: timeLineDataType;
+  data: educationType | experiencesType;
+};
+
 export type {
   languagesType,
   educationType,
@@ -63,4 +72,5 @@ export type {
   projectsType,
   SkillType,
   TechType,
+  TimeLineType,
 };
