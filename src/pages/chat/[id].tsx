@@ -1,4 +1,3 @@
-import Header from "@/components/ChatDetails/Header";
 import LimitExceeded from "@/components/ChatDetails/LimitExceeded";
 import Message from "@/components/ChatDetails/Message";
 import ChatInput from "@/components/Hero/ChatSection";
@@ -10,6 +9,7 @@ import { getParsed } from "@/utils/common";
 import { useParams } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { MdInfoOutline } from "react-icons/md";
+import { toast } from "sonner";
 
 type SingleMessageType = {
   id: string;
@@ -35,9 +35,23 @@ const ChatDetails = () => {
     }
   };
 
-  console.log("isLimitExceeded", isLimitExceeded);
-
   const handleMessage = async () => {
+    const handleError = () => {
+      toast("Something went wrong!.Please try again");
+      setIsSending(false);
+    };
+
+    if (!question) {
+      return toast(
+        "Question is too short. Please try again with a little longer question."
+      );
+    }
+    if (question.length > 100) {
+      return toast(
+        "Question is too long. Please try again with a shorter question."
+      );
+    }
+
     try {
       setIsSending(true);
       setMessages((prev) => [
@@ -72,10 +86,11 @@ const ChatDetails = () => {
         );
         scrollToBottom();
       } else {
+        handleError();
       }
       setIsSending(false);
     } catch (error) {
-      setIsSending(false);
+      handleError();
       console.error("Something went wrong in handleMessage due to", error);
     }
   };

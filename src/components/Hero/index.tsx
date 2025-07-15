@@ -10,6 +10,7 @@ import {
 import ChatInput from "./ChatSection";
 import axiosInstance from "@/utils/axios";
 import { useRouter } from "next/router";
+import { toast } from "sonner";
 
 const Hero = () => {
   const router = useRouter();
@@ -17,9 +18,22 @@ const Hero = () => {
   const [isCreating, setIsCreating] = useState(false);
 
   const handleChat = async () => {
+    const handleError = () => {
+      toast("Something went wrong!.Please try again");
+      setIsCreating(false);
+    };
+
     if (!question) {
-      return;
+      return toast(
+        "Question is too short. Please try again with a little longer question."
+      );
     }
+    if (question.length > 100) {
+      return toast(
+        "Question is too long. Please try again with a shorter question."
+      );
+    }
+
     try {
       setIsCreating(true);
       const { data } = await axiosInstance.post("create", {
@@ -27,6 +41,7 @@ const Hero = () => {
       });
       console.log("handleMessageData", data);
       if (data.isError && !data.data) {
+        handleError();
       } else {
         const userDetails = data.data.userDetails;
         const messageDetails = data.data.message;
@@ -38,7 +53,7 @@ const Hero = () => {
       }
       setIsCreating(false);
     } catch (error) {
-      setIsCreating(false);
+      handleError();
       console.error("Something went wrong in handleMessage due to", error);
     }
   };
