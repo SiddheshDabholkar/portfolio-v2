@@ -1,8 +1,9 @@
 import React from "react";
-import { projects } from "@/constant/project";
+import { notMaintainedProjects, projects } from "@/constant/project";
 import SectionName from "../SectionName";
 import { SectionIds } from "@/constant/common";
 import ProjectCard from "./ProjectCard";
+import NotMaintainedCard from "./NotMaintainedCard";
 
 const Projects = () => {
   return (
@@ -12,6 +13,16 @@ const Projects = () => {
         {projects.map((m, i) => (
           <ProjectCard index={i} key={m.id} data={m} />
         ))}
+      </div>
+      <div>
+        <p className="my-4 text-zinc-400 text-[0.75rem]">
+          Not maintained projects
+        </p>
+        <div>
+          {notMaintainedProjects.map((m) => (
+            <NotMaintainedCard index={m.id} key={m.id} data={m} />
+          ))}
+        </div>
       </div>
     </div>
   );

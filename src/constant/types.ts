@@ -51,6 +51,7 @@ type projectsType = {
   publicUrl: string;
   type: ProjectType;
   technologies: string[];
+  lastUpdatedYear: number;
 };
 
 type SkillType = {
