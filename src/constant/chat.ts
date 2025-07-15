@@ -1,7 +1,8 @@
 import { bio, education, experiences, languages } from "./about";
 import { socials } from "./contact";
-import { projects } from "./project";
+import { notMaintainedProjects, projects } from "./project";
 import { tech } from "./skills";
+import { projectsType } from "./types";
 
 const MESSAGES_LIMIT = 7;
 
@@ -33,19 +34,26 @@ const formatSocials = (): string => {
   return socials.map((exp) => `Company: ${exp.name}(${exp.href}) `).join("\n");
 };
 
-const formatProjects = (): string => {
+const formatProjects = (
+  projects: projectsType[],
+  isNotMaintained = false
+): string => {
   return projects
     .map(
       (p, i) =>
-        `Project ${i + 1}: Project  name is ${
-          p.title
-        } and was last modiefied on ${
+        `${isNotMaintained ? "Not maintained" : ""} Project ${
+          i + 1
+        }: Project  name is ${p.title} and was last modiefied on ${
           p.lastUpdatedYear
         }.live link can be found at ${
           p.publicUrl
         }.Source code can be found at ${
           p.githubUrl
-        }.description of the project: ${p.description}`
+        }.description of the project: ${
+          p.description
+        }.Technologies used to build this projects are ${p.technologies.join(
+          ","
+        )}`
     )
     .join("\n");
 };
@@ -69,7 +77,10 @@ Experiences:
 ${formatExperiences()}
 
 Projects:
-${formatProjects()}
+${formatProjects(projects)}
+
+Not maintained projects:
+${formatProjects(notMaintainedProjects)}
 
 Skills:
 ${formatSkills()}
