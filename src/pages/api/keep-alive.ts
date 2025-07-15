@@ -8,18 +8,19 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  if (req.method !== "GET") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
-  }
-  const headerValueToCheck = `Bearer ${CRON_SECRET}`;
-  const headerValue = req.headers.authorization ?? null;
+  const isAuthorized =
+    req.headers["x-vercel-cron"] === "1" ||
+    req.headers.authorization === `Bearer ${CRON_SECRET}`;
 
-  if (headerValue !== headerValueToCheck) {
+  if (!isAuthorized) {
     return res.status(401).end("Unauthorized");
   }
+
   try {
+    console.log("Vercel Cron Job triggered at", new Date().toISOString());
+
     const { data, error } = await supabase.from("user").select("ip").limit(1);
+
     return res.status(200).json(
       FormatResponse({
         data: null,
