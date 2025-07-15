@@ -39,6 +39,8 @@ const formatProjects = (): string => {
       (p, i) =>
         `Project ${i + 1}: Project  name is ${
           p.title
+        } and was last modiefied on ${
+          p.lastUpdatedYear
         }.live link can be found at ${
           p.publicUrl
         }.Source code can be found at ${
