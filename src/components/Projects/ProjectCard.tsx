@@ -26,7 +26,7 @@ const ProjectCard: ProjectCardProps = ({ data, index }) => {
     >
       <div className="w-full h-[300px] lg:h-auto lg:w-5/12 p-6 bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-lg">
         <div className="h-full w-full p-4 relative">
-          <Image objectFit="contain" fill alt={data.title} src={data.image} />
+          <Image objectFit="fill" fill alt={data.title} src={data.image} />
         </div>
       </div>
       <div className="w-full lg:w-7/12">

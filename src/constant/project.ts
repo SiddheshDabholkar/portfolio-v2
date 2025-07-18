@@ -126,6 +126,39 @@ const projects: projectsType[] = [
     technologies: ["Nextjs", "Express.js", "Scss", "Framer-motion"],
     lastUpdatedYear: 2025,
   },
+  {
+    id: 3,
+    title: "Innerloop's Portal",
+    description:
+      "A full-featured media management platform built for creators and enterprises. Users can upload images, audio, and video files, which are then automatically processed into optimized, streamable formats. The portal supports fast, secure delivery and includes a content showcase interface.",
+    image: "/projects/innerloop-portal.png",
+    githubUrl: "",
+    publicUrl: "https://studio.innerloop.stream/user/login",
+    type: ProjectType.WORK,
+    technologies: ["Reactjs", "Express.js", "Scss", "Turso"],
+    lastUpdatedYear: 2025,
+  },
+  {
+    id: 4,
+    title: "LawyrHub",
+    description:
+      "LawyrHub is an AI-powered legal assistant platform where users can ask legal queries and receive context-aware answers grounded in the Indian Constitution, central laws, and region-specific state acts. The system uses a robust retrieval-augmented generation (RAG) setup to fetch the most relevant legal provisions and respond in plain language.",
+    image: "/projects/lawyrhub.png",
+    githubUrl: "https://github.com/lawyr-app",
+    publicUrl: "",
+    type: ProjectType.WORK,
+    technologies: [
+      "Nextjs",
+      "Fastify",
+      "Tailwind",
+      "Mongodb",
+      "Pinecone",
+      "Langchain",
+      "Nodejs",
+      "Typescript",
+    ],
+    lastUpdatedYear: 2025,
+  },
 ];
 
 export { projects, ProjectType, notMaintainedProjects };

@@ -80,7 +80,7 @@ Projects:
 ${formatProjects(projects)}
 
 Not maintained projects:
-${formatProjects(notMaintainedProjects)}
+${formatProjects(notMaintainedProjects, true)}
 
 Skills:
 ${formatSkills()}
