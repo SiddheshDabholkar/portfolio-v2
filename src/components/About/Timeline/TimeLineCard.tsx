@@ -30,7 +30,6 @@ const TimeLineCard: TimeLineCardProps = ({ data, index }) => {
         <p className="text-[0.75rem] text-zinc-500">{data.date}</p>
       </div>
       <div className="relative flex items-center justify-center">
-        {/* Outer ring with pulse */}
         <motion.div
           className="absolute w-6 h-6 rounded-full border-2 border-blue-400/30"
           animate={{
@@ -45,13 +44,11 @@ const TimeLineCard: TimeLineCardProps = ({ data, index }) => {
           }}
         />
 
-        {/* Main dot with gradient */}
         <motion.div
-          className="relative w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-purple-500 shadow-lg"
+          className="relative w-3 h-3 rounded-full bg-gradient-to-r from-zinc-50 to-zinc-500 shadow-lg"
           whileHover={{ scale: 1.3 }}
           transition={{ duration: 0.2 }}
         >
-          {/* Inner glow */}
           <div className="absolute inset-0.5 bg-white/40 rounded-full" />
         </motion.div>
       </div>

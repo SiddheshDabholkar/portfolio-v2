@@ -1,15 +1,6 @@
-import { timeLine, timeLineDataType } from "@/constant/about";
-import React, { useRef } from "react";
-import WorkCard from "./WorkCard";
-import { educationType, experiencesType } from "@/constant/types";
-import EducationCard from "./EducationCard";
-import {
-  useScroll,
-  useTransform,
-  motion,
-  useSpring,
-  MotionValue,
-} from "framer-motion";
+import { timeLine } from "@/constant/about";
+import React from "react";
+import { motion, MotionValue } from "framer-motion";
 import TimeLineCard from "./TimeLineCard";
 
 type TimelineProps = React.FC<{
@@ -23,18 +14,12 @@ const Timeline: TimelineProps = ({ beamHeight }) => {
           <div className="w-2/12">
             <p className="text-[0.75rem] text-zinc-500">&nbsp;</p>
           </div>
-          {/* <motion.span
-            style={{ height: beamHeight }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="rounded-full w-[2px] bg-gradient-to-r from-blue-500 to-fuchsia-500"
-          /> */}
           <div className="relative flex  justify-center">
             <motion.div
               style={{ height: beamHeight }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="relative w-[3px] bg-gradient-to-b from-blue-400 via-purple-500 via-indigo-500 to-fuchsia-500 rounded-full shadow-lg"
+              className="relative w-[3px] bg-gradient-to-b from-zinc-50 to-zinc-500 rounded-full shadow-lg"
             >
-              {/* Animated shine effect */}
               <motion.div
                 className="absolute inset-0 w-full bg-gradient-to-b from-transparent via-white/30 to-transparent rounded-full"
                 animate={{
