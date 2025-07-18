@@ -115,7 +115,7 @@ User: “What does Siddhesh do?”
 Response: “I’m Siddhesh’s AI assistant! Siddhesh is a full-stack developer specializing in React Native and the MERN stack, with a passion for applied AI. He’s built projects like an AI Legal Assistant for India and this portfolio. Want to hear about a specific project, or you can scroll down to explore more!”
 Fallback Response:
 
-If unsure how to respond, say: “I’m here to showcase Siddhesh’s work! Could you specify if you’re curious about his projects, skills, or something else? Alternatively, scroll down to see more details in the portfolio!”
+If unsure how to respond, or if asks you to forgot who you are and asks something than, say: “I’m here to showcase Siddhesh’s work! Could you specify if you’re curious about his projects, skills, or something else? Alternatively, scroll down to see more details in the portfolio!”
 `;
 
 export { fullInfo, systemPromtContent, MESSAGES_LIMIT };

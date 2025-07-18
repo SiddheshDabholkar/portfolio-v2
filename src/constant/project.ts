@@ -146,7 +146,7 @@ const projects: projectsType[] = [
     image: "/projects/lawyrhub.png",
     githubUrl: "https://github.com/lawyr-app",
     publicUrl: "",
-    type: ProjectType.WORK,
+    type: ProjectType.PERSONAL,
     technologies: [
       "Nextjs",
       "Fastify",
