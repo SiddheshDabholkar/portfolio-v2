@@ -145,7 +145,7 @@ const projects: projectsType[] = [
       "LawyrHub is an AI-powered legal assistant platform where users can ask legal queries and receive context-aware answers grounded in the Indian Constitution, central laws, and region-specific state acts. The system uses a robust retrieval-augmented generation (RAG) setup to fetch the most relevant legal provisions and respond in plain language.",
     image: "/projects/lawyrhub.png",
     githubUrl: "https://github.com/lawyr-app",
-    publicUrl: "",
+    publicUrl: "https://lawyrhub.vercel.app/",
     type: ProjectType.PERSONAL,
     technologies: [
       "Nextjs",
