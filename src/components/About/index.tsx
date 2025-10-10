@@ -4,9 +4,8 @@ import React, { useRef } from "react";
 import LanguageCard from "./LanguageCard";
 import SectionName from "../SectionName";
 import { fullName, SectionIds } from "@/constant/common";
-import Image from "next/image";
 import Timeline from "./Timeline";
-import { useScroll, useTransform, useInView, motion } from "framer-motion";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const About = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -25,19 +24,20 @@ const About = () => {
       <SectionName text="About" />
 
       <div className="flex flex-col items-center justify-center">
-        <Image
+        {/* <Image
           alt="Siddhesh dabholkar"
           src="/user.jpg"
           height={100}
           width={100}
           className="rounded-full"
           objectFit="cover"
-        />
-        <p className="text-center text-[0.75rem] md:text-[0.85rem] mt-2 ">
-          10 may 2001
-        </p>
+        /> */}
+
         <p className="text-[1.65rem] md:text-[1.85rem] text-center font-extrabold">
           {fullName}
+        </p>
+        <p className="text-center text-[0.75rem] md:text-[0.85rem] mt-2 ">
+          📍 Goa,India | 📅 10 may 2001
         </p>
         <p className="text-[0.75rem] mt-2 md:text-[0.8rem] w-10/12 text-center text-zinc-400">
           {bio}

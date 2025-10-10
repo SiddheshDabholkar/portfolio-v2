@@ -91,7 +91,7 @@ const innerloopInfo: experiencesType = {
   position: "Full Stack Developer",
   linkedInUrl: "https://www.linkedin.com/company/innerloop-streaming-ai",
   startDate: "August 2023",
-  endDate: "curently working",
+  endDate: "August 2025",
   location: "Remote",
   companyUrl: "https://www.innerloop.stream/",
   img: "/companies/innerloop.webp",
