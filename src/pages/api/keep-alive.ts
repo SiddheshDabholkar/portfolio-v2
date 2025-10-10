@@ -2,7 +2,8 @@ import { supabase } from "@/utils/supabase";
 import { FormatResponse } from "@/utils/response";
 import { RESPONSE_MESSAGES } from "@/constant/messages";
 import { NextApiRequest, NextApiResponse } from "next";
-
+// https://stackoverflow.com/a/77078560
+export const revalidate = 0;
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
