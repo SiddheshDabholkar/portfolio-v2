@@ -1,12 +1,7 @@
 import { RESPONSE_MESSAGES } from "@/constant/messages";
 import { FormatResponse } from "@/utils/response";
-import { sse } from "@/utils/sse";
-import { handleCreateMessage, supabase } from "@/utils/supabase";
-import { GoogleGenAI } from "@google/genai";
+import { handleCreateMessage } from "@/utils/supabase";
 import type { NextApiRequest, NextApiResponse } from "next";
-
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export default async function handler(
   req: NextApiRequest,

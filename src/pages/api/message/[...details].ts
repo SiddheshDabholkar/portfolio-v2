@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { systemPromtContent } from "@/constant/chat";
 import { RESPONSE_MESSAGES, SSE } from "@/constant/messages";
 import { sse } from "@/utils/sse";
 import { supabase } from "@/utils/supabase";
-import { GoogleGenAI } from "@google/genai";
 import type { NextApiRequest, NextApiResponse } from "next";
 import Groq from "groq-sdk";
 import { GROQ_API_KEY } from "@/constant/envs";
@@ -52,7 +52,7 @@ export default async function handler(
       return;
     }
 
-    const { data, error: fetchError } = await supabase
+    const { data } = await supabase
       .from("message")
       .select("*")
       .eq("id", id)
@@ -70,7 +70,34 @@ export default async function handler(
       });
       return;
     }
-    const { answer, question } = messageDetail;
+    const { question } = messageDetail;
+
+    const { data: recentMessages } = await supabase
+      .from("message")
+      .select("question, answer")
+      .eq("userId", userId)
+      .neq("id", id)
+      .order("created_at", { ascending: false })
+      .limit(2);
+
+    console.log("recentMessages", recentMessages);
+
+    const mesageHistory = (() => {
+      const history: Groq.Chat.Completions.ChatCompletionMessageParam[] = [];
+      if (recentMessages && Array.isArray(recentMessages)) {
+        recentMessages.forEach((message) => {
+          history.push({
+            role: "user",
+            content: message.question,
+          });
+          history.push({
+            role: "system",
+            content: message.answer,
+          });
+        });
+      }
+      return history;
+    })();
 
     const stream = await groq.chat.completions.create({
       messages: [
@@ -78,12 +105,13 @@ export default async function handler(
           role: "system",
           content: systemPromtContent,
         },
+        ...mesageHistory,
         {
           role: "user",
           content: question,
         },
       ],
-      model: "llama3-8b-8192",
+      model: "llama-3.1-8b-instant",
       temperature: 0.7,
       max_tokens: 1024,
       stream: true,
