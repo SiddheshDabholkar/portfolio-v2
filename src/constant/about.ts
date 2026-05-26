@@ -1,12 +1,18 @@
-import { fullName, WorkType } from "./common";
+import { fullName } from "./common";
+import { educationType, languagesType, TimeLineType } from "./types";
+import { getExperience } from "../utils/common";
 import {
-  educationType,
-  experiencesType,
-  languagesType,
-  TimeLineType,
-} from "./types";
+  experiences,
+  droolmonekeyInfo,
+  innerloopInfo,
+  cloudBloqInfo,
+  KalpasInfo,
+} from "./experiences";
 
-const bio = ` Hi, I'm ${fullName}, Software Engineer with ~3 years of hands-on experience — including 1.5 years full-time and 1.5 years as a full-stack developer intern. I specialize in building scalable, high-performance web applications and cross platform app. I’m passionate about writing clean code, shipping fast, and constantly exploring better ways to solve real-world problems.`;
+const fullTimeExperience = getExperience(new Date("2023-08-01"));
+const totalExperience = getExperience(new Date("2021-07-01"));
+
+const bio = `Hi, I'm ${fullName}, Software Engineer with ${totalExperience} of hands-on experience — including ${fullTimeExperience} full-time experience as a software engineer. I specialize in building scalable, high-performance web applications and cross-platform apps. I’m passionate about writing clean code, shipping fast, and constantly exploring better ways to solve real-world problems.`;
 
 const languages: languagesType[] = [
   {
@@ -59,51 +65,6 @@ const gecInfo: educationType = {
 
 const education: educationType[] = [sscInfo, gecInfo];
 
-const KalpasInfo: experiencesType = {
-  id: 1,
-  name: "Kalpas Innovations",
-  position: "React Developer Intern",
-  linkedInUrl: "https://www.linkedin.com/company/kalpas-innovations",
-  startDate: "Jul 2021",
-  endDate: "Sep 2021",
-  location: "Remote",
-  companyUrl: "http://kalpas.in",
-  img: "/companies/kalpas.webp",
-  type: WorkType.INTERN,
-};
-
-const cloudBloqInfo: experiencesType = {
-  id: 2,
-  name: "CloudBloq",
-  position: "Full Stack Developer Intern",
-  linkedInUrl: "https://www.linkedin.com/company/cloudbloq",
-  startDate: "April 2022",
-  endDate: "August 2023",
-  location: "Remote",
-  companyUrl: "https://www.cloudbloq.io/",
-  img: "/companies/cloudbloq.webp",
-  type: WorkType.INTERN,
-};
-
-const innerloopInfo: experiencesType = {
-  id: 3,
-  name: "Innerloop Streaming AI",
-  position: "Full Stack Developer",
-  linkedInUrl: "https://www.linkedin.com/company/innerloop-streaming-ai",
-  startDate: "August 2023",
-  endDate: "August 2025",
-  location: "Remote",
-  companyUrl: "https://www.innerloop.stream/",
-  img: "/companies/innerloop.webp",
-  type: WorkType.FULL_TIME,
-};
-
-const experiences: experiencesType[] = [
-  KalpasInfo,
-  cloudBloqInfo,
-  innerloopInfo,
-];
-
 enum timeLineDataType {
   // BIRTHDAY = "BIRTHDAY",
   WORK = "WORK",
@@ -148,10 +109,17 @@ const timeLine: TimeLineType[] = [
   },
   {
     id: 12,
-    date: "August 2023",
+    date: innerloopInfo.startDate,
     description: `Joined as Fullstack developer at ${innerloopInfo.name}`,
     type: timeLineDataType.WORK,
     data: innerloopInfo,
+  },
+  {
+    id: 13,
+    date: droolmonekeyInfo.startDate,
+    description: `Joined as Fullstack developer at ${droolmonekeyInfo.name}`,
+    type: timeLineDataType.WORK,
+    data: droolmonekeyInfo,
   },
 ];
 
