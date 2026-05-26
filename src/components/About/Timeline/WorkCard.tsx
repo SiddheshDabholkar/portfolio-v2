@@ -10,7 +10,6 @@ type WorkCardProps = React.FC<{
   data: experiencesType;
 }>;
 const WorkCard: WorkCardProps = ({ data }) => {
-  console.log("workCard", data);
   return (
     <div className="flex flex-col md:flex-row p-3 gap-4  rounded-xl border border-zinc-900">
       <div className="h-full gap-2 flex flex-row md:items-center justify-center w-full md:w-[120px] p-4 relative bg-gradient-to-r from-zinc-800 to-zinc-900 rounded-sm">
