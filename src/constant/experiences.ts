@@ -45,7 +45,7 @@ const droolmonekeyInfo: experiencesType = {
   name: "Droolmonkey",
   position: "Full Stack Developer",
   linkedInUrl: "https://www.linkedin.com/company/drool-monkey",
-  startDate: "December 2023",
+  startDate: "December 2025",
   endDate: "current",
   location: "Inoffice",
   companyUrl: "https://droolmonkey.com/",

@@ -222,6 +222,55 @@ const tech: TechType[] = [
       "Global content delivery network (CDN) that securely delivers websites, APIs, and media with low latency.",
     img: "/skills/aws-amazon-cloudfront.svg",
   },
+
+  {
+    id: 31,
+    name: "Vercel",
+    isBeginner: false,
+    description:
+      "Cloud platform for deploying and scaling frontend applications, serverless functions, and full-stack web applications.",
+    img: "/skills/vercel.svg",
+  },
+  {
+    id: 32,
+    name: "Stripe",
+    isBeginner: false,
+    description:
+      "Online payment platform for processing payments, subscriptions, invoicing, and marketplace transactions.",
+    img: "/skills/stripe.svg",
+  },
+  {
+    id: 34,
+    name: "Clerk",
+    isBeginner: false,
+    description:
+      "Authentication and user management platform that provides sign-in, sign-up, session handling, and user profiles.",
+    img: "/skills/clerk.svg",
+  },
+  {
+    id: 35,
+    name: "LangChain",
+    isBeginner: false,
+    description:
+      "Framework for building AI applications powered by large language models, agents, tools, and workflows.",
+    img: "/skills/langgraph-langchain.svg",
+  },
+  {
+    id: 33,
+    name: "Razorpay",
+    isBeginner: false,
+    description:
+      "Payment gateway for accepting online payments, handling subscriptions, and managing payouts in India.",
+    img: "/skills/razorpay.svg",
+  },
+  {
+    id: 36,
+    name: "NestJS",
+    isBeginner: false,
+    description:
+      "Progressive Node.js framework for building scalable, maintainable, and production-ready server-side applications with TypeScript.",
+    img: "/skills/nestjs.svg",
+  },
 ];
 
 export { tech };
