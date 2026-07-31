@@ -134,6 +134,143 @@ const tech: TechType[] = [
     description: "Toolchain for building React Native apps.",
     img: "/skills/expo.svg",
   },
+  {
+    id: 20,
+    name: "PostgreSQL",
+    isBeginner: false,
+    description:
+      "Powerful open-source relational database used for designing scalable applications, complex queries, transactions, and efficient data management.",
+    img: "/skills/postgresql.svg",
+  },
+  {
+    id: 21,
+    name: "Github",
+    isBeginner: false,
+    description:
+      "Version control and collaboration platform used for source code management, pull requests, code reviews, and team collaboration.",
+    img: "/skills/github.svg",
+  },
+  {
+    id: 22,
+    name: "Github Actions",
+    isBeginner: false,
+    description:
+      "CI/CD platform for automating testing, building, and deployment workflows directly from GitHub repositories.",
+    img: "/skills/github-actions.svg",
+  },
+  {
+    id: 23,
+    name: "FastAPI",
+    isBeginner: false,
+    description:
+      "High-performance Python framework for building REST APIs with automatic validation, type safety, and interactive documentation.",
+    img: "/skills/fastapi.svg",
+  },
+  {
+    id: 24,
+    name: "Docker",
+    isBeginner: false,
+    description:
+      "Containerization platform used to package applications and their dependencies into portable and reproducible environments.",
+    img: "/skills/docker.svg",
+  },
+  {
+    id: 25,
+    name: "AWS",
+    isBeginner: false,
+    description:
+      "Comprehensive cloud platform offering computing, storage, networking, databases, and infrastructure services at scale.",
+    img: "/skills/aws.svg",
+  },
+  {
+    id: 26,
+    name: "AWS ECS",
+    isBeginner: false,
+    description:
+      "Managed container orchestration service for deploying, scaling, and managing Docker containers in the AWS cloud.",
+    img: "/skills/aws-ecs.svg",
+  },
+  {
+    id: 27,
+    name: "AWS Secret Manager",
+    isBeginner: false,
+    description:
+      "Secure service for storing, rotating, and managing sensitive information such as API keys, passwords, and credentials.",
+    img: "/skills/aws-aws-secrets-manager.svg",
+  },
+  {
+    id: 28,
+    name: "AWS Lambda",
+    isBeginner: false,
+    description:
+      "Serverless compute service that runs code on demand without managing servers, scaling automatically with traffic.",
+    img: "/skills/aws-aws-lambda.svg",
+  },
+  {
+    id: 29,
+    name: "AWS Amplify",
+    isBeginner: false,
+    description:
+      "Development platform for building and deploying full-stack web and mobile applications with AWS services.",
+    img: "/skills/aws-aws-amplify.svg",
+  },
+  {
+    id: 30,
+    name: "AWS CloudFront",
+    isBeginner: false,
+    description:
+      "Global content delivery network (CDN) that securely delivers websites, APIs, and media with low latency.",
+    img: "/skills/aws-amazon-cloudfront.svg",
+  },
+
+  {
+    id: 31,
+    name: "Vercel",
+    isBeginner: false,
+    description:
+      "Cloud platform for deploying and scaling frontend applications, serverless functions, and full-stack web applications.",
+    img: "/skills/vercel.svg",
+  },
+  {
+    id: 32,
+    name: "Stripe",
+    isBeginner: false,
+    description:
+      "Online payment platform for processing payments, subscriptions, invoicing, and marketplace transactions.",
+    img: "/skills/stripe.svg",
+  },
+  {
+    id: 34,
+    name: "Clerk",
+    isBeginner: false,
+    description:
+      "Authentication and user management platform that provides sign-in, sign-up, session handling, and user profiles.",
+    img: "/skills/clerk.svg",
+  },
+  {
+    id: 35,
+    name: "LangChain",
+    isBeginner: false,
+    description:
+      "Framework for building AI applications powered by large language models, agents, tools, and workflows.",
+    img: "/skills/langgraph-langchain.svg",
+  },
+  {
+    id: 33,
+    name: "Razorpay",
+    isBeginner: false,
+    description:
+      "Payment gateway for accepting online payments, handling subscriptions, and managing payouts in India.",
+    img: "/skills/razorpay.svg",
+  },
+  {
+    id: 36,
+    name: "NestJS",
+    isBeginner: false,
+    description:
+      "Progressive Node.js framework for building scalable, maintainable, and production-ready server-side applications with TypeScript.",
+    img: "/skills/nestjs.svg",
+  },
 ];
 
 export { tech };

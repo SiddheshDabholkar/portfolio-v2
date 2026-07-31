@@ -114,30 +114,30 @@ const projects: projectsType[] = [
     ],
     lastUpdatedYear: 2025,
   },
-  {
-    id: 2,
-    title: "Innerloop's landing page",
-    description:
-      "Developed Innerloop Stream AI, a cutting-edge platform that transforms media into personalized insights and stories. It empowers users with seamless, AI-driven content creation tools.",
-    image: "/projects/innerloop.png",
-    githubUrl: "",
-    publicUrl: "https://www.innerloop.stream/",
-    type: ProjectType.WORK,
-    technologies: ["Nextjs", "Express.js", "Scss", "Framer-motion"],
-    lastUpdatedYear: 2025,
-  },
-  {
-    id: 3,
-    title: "Innerloop's Portal",
-    description:
-      "A full-featured media management platform built for creators and enterprises. Users can upload images, audio, and video files, which are then automatically processed into optimized, streamable formats. The portal supports fast, secure delivery and includes a content showcase interface.",
-    image: "/projects/innerloop-portal.png",
-    githubUrl: "",
-    publicUrl: "https://studio.innerloop.stream/user/login",
-    type: ProjectType.WORK,
-    technologies: ["Reactjs", "Express.js", "Scss", "Turso"],
-    lastUpdatedYear: 2025,
-  },
+  // {
+  //   id: 2,
+  //   title: "Innerloop's landing page",
+  //   description:
+  //     "Developed Innerloop Stream AI, a cutting-edge platform that transforms media into personalized insights and stories. It empowers users with seamless, AI-driven content creation tools.",
+  //   image: "/projects/innerloop.png",
+  //   githubUrl: "",
+  //   publicUrl: "https://www.innerloop.stream/",
+  //   type: ProjectType.WORK,
+  //   technologies: ["Nextjs", "Express.js", "Scss", "Framer-motion"],
+  //   lastUpdatedYear: 2025,
+  // },
+  // {
+  //   id: 3,
+  //   title: "Innerloop's Portal",
+  //   description:
+  //     "A full-featured media management platform built for creators and enterprises. Users can upload images, audio, and video files, which are then automatically processed into optimized, streamable formats. The portal supports fast, secure delivery and includes a content showcase interface.",
+  //   image: "/projects/innerloop-portal.png",
+  //   githubUrl: "",
+  //   publicUrl: "https://studio.innerloop.stream/user/login",
+  //   type: ProjectType.WORK,
+  //   technologies: ["Reactjs", "Express.js", "Scss", "Turso"],
+  //   lastUpdatedYear: 2025,
+  // },
   {
     id: 4,
     title: "LawyrHub",
@@ -158,6 +158,28 @@ const projects: projectsType[] = [
       "Typescript",
     ],
     lastUpdatedYear: 2025,
+  },
+  {
+    id: 4,
+    title: "Codecv",
+    description:
+      "CodeCV is an AI-powered platform that helps developers and job seekers create professional resumes, generate personalized cover letters, and streamline the job application process. Built with a modern monorepo architecture using Next.js, NestJS, FastAPI, PostgreSQL, and AWS, CodeCV combines traditional backend services with AI-driven features to simplify career growth and job hunting.",
+    image: "/projects/codecv.png",
+    githubUrl: "https://github.com/SiddheshDabholkar/Codecv",
+    publicUrl: "https://codecv-web.vercel.app/",
+    type: ProjectType.PERSONAL,
+    technologies: [
+      "Nextjs",
+      "Tailwind",
+      "Postgresql",
+      "Neondb",
+      "Nodejs",
+      "Typescript",
+      "Groq",
+      "Python",
+      "FastAPI",
+    ],
+    lastUpdatedYear: 2026,
   },
 ];
 
